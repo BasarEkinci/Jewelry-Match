@@ -1,11 +1,11 @@
-﻿using _GameFolders.Scripts.Interfaces;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace _GameFolders.Scripts
 {
     public class ObjectSelector : MonoBehaviour
     {
-        private ICollectable _currentCollectable;
+        [SerializeField] private SlotManager slotManager;
+        private Jewelry _currentJewelry; 
         private Camera _camera;
 
         private void Awake()
@@ -14,32 +14,37 @@ namespace _GameFolders.Scripts
         }
 
         private void Update()
-        { 
-            if (Input.GetMouseButton(0)) 
-            {
-                if (TryGetCollectable())
-                {
-                    if (Input.GetMouseButtonUp(0))
-                        _currentCollectable.Collect();
-                    else
-                        _currentCollectable.Drop();
-                    _currentCollectable.Select();
-                }
-            }
-        }
-
-        private bool TryGetCollectable()
         {
-            Ray ray = _camera.ScreenPointToRay(Input.mousePosition); 
-            RaycastHit hit; 
-            if (Physics.Raycast(ray, out hit)) 
+            if (Input.GetMouseButton(0))
             {
-                if (hit.collider.TryGetComponent<ICollectable>(out ICollectable collectable))
-                    _currentCollectable = collectable;
-                else
-                    _currentCollectable = null;
+                Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit))
+                {
+                    if (hit.collider.TryGetComponent<Jewelry>(out Jewelry collectable))
+                    {
+                        _currentJewelry = collectable;
+                    }
+                    else
+                    {
+                        if (_currentJewelry != null)
+                        {
+                            _currentJewelry.Drop(); 
+                            _currentJewelry = null;
+                        }
+                    }
+                }
+            } 
+            if (_currentJewelry != null)
+            { 
+                _currentJewelry.Select();
+                if (Input.GetMouseButtonUp(0))
+                { 
+                    _currentJewelry.Collect();
+                    slotManager.AddJewelry(_currentJewelry);
+                    _currentJewelry = null; 
+                } 
             }
-            return _currentCollectable != null;
         }
     }
 }
