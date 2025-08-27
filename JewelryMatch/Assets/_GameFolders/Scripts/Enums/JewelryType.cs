@@ -2,8 +2,13 @@
 {
     public enum JewelryType
     {
-        Type1,
-        Type2,
-        Type3,
+        LetterAGold,
+        LetterASilver,
+        LetterBGold,
+        LetterBSilver,
+        LetterCGold,
+        LetterCSilver,
+        LetterDGold,
+        LetterDSilver,
     }
 }

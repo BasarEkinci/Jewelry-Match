@@ -9,13 +9,14 @@ namespace _GameFolders.Scripts
 {
     public class SlotManager : MonoBehaviour
     {
-        [HideInInspector] public List<Jewelry> collectedJewelry = new();
         [SerializeField] private List<Transform> slotsTransforms;
         [SerializeField] private List<Slot> slots;
         
+        private readonly List<Jewelry> _collectedJewelry = new();
+        
         public void AddJewelry(Jewelry jewelry)
         {
-            if (collectedJewelry.Count < slotsTransforms.Count)
+            if (_collectedJewelry.Count < slotsTransforms.Count)
             {
                 InsertIfExist(jewelry).Forget();
             }
@@ -28,27 +29,27 @@ namespace _GameFolders.Scripts
         private float UpdateJewelryPositions()
         {
             float duration = 0.2f; 
-            for (int i = 0; i < collectedJewelry.Count; i++)
+            for (int i = 0; i < _collectedJewelry.Count; i++)
             {
-                collectedJewelry[i].transform.DOMove(slotsTransforms[i].position, duration);
-                collectedJewelry[i].transform.DORotate(slotsTransforms[i].eulerAngles, duration);
+                _collectedJewelry[i].transform.DOMove(slotsTransforms[i].position, duration);
+                _collectedJewelry[i].transform.DORotate(slotsTransforms[i].eulerAngles, duration);
             }
             return duration;
         }
 
         private async UniTaskVoid InsertIfExist(Jewelry collected)
         {
-            int index = collectedJewelry.FindLastIndex(j => j.Type == collected.Type);
+            int index = _collectedJewelry.FindLastIndex(j => j.Type == collected.Type);
             if (index >= 0)
-                collectedJewelry.Insert(index + 1, collected);
+                _collectedJewelry.Insert(index + 1, collected);
             else
-                collectedJewelry.Add(collected);
+                _collectedJewelry.Add(collected);
 
             float duration = UpdateJewelryPositions();
             await UniTask.Delay(TimeSpan.FromSeconds(duration));
-            slots[collectedJewelry.IndexOf(collected)].Animate();
+            slots[_collectedJewelry.IndexOf(collected)].Animate();
 
-            var matchedJewels = collectedJewelry
+            var matchedJewels = _collectedJewelry
                 .Where(j => j.Type == collected.Type)
                 .ToList();
 
@@ -63,14 +64,13 @@ namespace _GameFolders.Scripts
 
         private async void MatchJewelry(List<Jewelry> matched)
         {
-            float targetXPosition = slotsTransforms[collectedJewelry.IndexOf(matched[1])].position.x;
-            Debug.Log(targetXPosition);
+            float targetXPosition = slotsTransforms[_collectedJewelry.IndexOf(matched[1])].position.x;
             matched[0].transform.DOMoveX(targetXPosition, 0.1f);
             matched[2].transform.DOMoveX(targetXPosition, 0.1f);
             await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
             foreach (var jewelry in matched)
             {
-                collectedJewelry.Remove(jewelry);
+                _collectedJewelry.Remove(jewelry);
                 jewelry.OnMatch();
             }
         }
