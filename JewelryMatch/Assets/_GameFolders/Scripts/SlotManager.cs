@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
@@ -9,15 +10,14 @@ namespace _GameFolders.Scripts
     public class SlotManager : MonoBehaviour
     {
         [HideInInspector] public List<Jewelry> collectedJewelry = new();
-        public List<Transform> slotsTransforms;
+        [SerializeField] private List<Transform> slotsTransforms;
+        [SerializeField] private List<Slot> slots;
         
         public void AddJewelry(Jewelry jewelry)
         {
             if (collectedJewelry.Count < slotsTransforms.Count)
             {
-                bool matched = InsertIfExist(jewelry);
-                if (!matched)
-                    UpdateJewelryPositions();
+                InsertIfExist(jewelry).Forget();
             }
             else
             {
@@ -25,15 +25,18 @@ namespace _GameFolders.Scripts
             }
         }
 
-        private void UpdateJewelryPositions()
+        private float UpdateJewelryPositions()
         {
+            float duration = 0.2f; 
             for (int i = 0; i < collectedJewelry.Count; i++)
             {
-                collectedJewelry[i].transform.DOMove(slotsTransforms[i].position, 0.2f);
-                collectedJewelry[i].transform.DORotate(slotsTransforms[i].eulerAngles, 0.2f);
+                collectedJewelry[i].transform.DOMove(slotsTransforms[i].position, duration);
+                collectedJewelry[i].transform.DORotate(slotsTransforms[i].eulerAngles, duration);
             }
+            return duration;
         }
-        private bool InsertIfExist(Jewelry collected)
+
+        private async UniTaskVoid InsertIfExist(Jewelry collected)
         {
             int index = collectedJewelry.FindLastIndex(j => j.Type == collected.Type);
             if (index >= 0)
@@ -41,35 +44,35 @@ namespace _GameFolders.Scripts
             else
                 collectedJewelry.Add(collected);
 
+            float duration = UpdateJewelryPositions();
+            await UniTask.Delay(TimeSpan.FromSeconds(duration));
+            slots[collectedJewelry.IndexOf(collected)].Animate();
+
             var matchedJewels = collectedJewelry
                 .Where(j => j.Type == collected.Type)
                 .ToList();
 
             if (matchedJewels.Count == 3)
             {
-                MatchJewelry(matchedJewels).Forget();
-                return true;
+                await UniTask.Delay(TimeSpan.FromSeconds(duration));
+                MatchJewelry(matchedJewels);
+                await UniTask.Delay(TimeSpan.FromSeconds(duration));
+                UpdateJewelryPositions();
             }
-
-            return false;
         }
-        private async UniTask MatchJewelry(List<Jewelry> matchedObjects)
-        {
-            Vector3 targetPosition = matchedObjects[1].transform.position;
 
-            var seq = DOTween.Sequence();
-            seq.Join(matchedObjects[0].transform.DOMove(targetPosition, 0.2f));
-            seq.Join(matchedObjects[2].transform.DOMove(targetPosition, 0.2f));
-            seq.OnComplete(() =>
+        private async void MatchJewelry(List<Jewelry> matched)
+        {
+            float targetXPosition = slotsTransforms[collectedJewelry.IndexOf(matched[1])].position.x;
+            Debug.Log(targetXPosition);
+            matched[0].transform.DOMoveX(targetXPosition, 0.1f);
+            matched[2].transform.DOMoveX(targetXPosition, 0.1f);
+            await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
+            foreach (var jewelry in matched)
             {
-                foreach (var jewel in matchedObjects)
-                {
-                    collectedJewelry.Remove(jewel);
-                    Destroy(jewel.gameObject);
-                }
-            });
-            await seq.AsyncWaitForCompletion();
-            UpdateJewelryPositions();
+                collectedJewelry.Remove(jewelry);
+                jewelry.OnMatch();
+            }
         }
     }
 }

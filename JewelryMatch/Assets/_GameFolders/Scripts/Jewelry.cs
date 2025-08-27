@@ -39,6 +39,13 @@ namespace _GameFolders.Scripts
             _collider.enabled = false;
         }
 
+        public void OnMatch()
+        {
+            Sequence seq = DOTween.Sequence();
+            seq.Join(transform.DOMoveZ(transform.position.z + 0.5f, 0.1f));
+            seq.Append(transform.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack));
+        }
+        
         public override void Drop()
         {
             _rigidbody.useGravity = true;
