@@ -1,5 +1,5 @@
 using _GameFolders.Scripts.Abstracts;
-using _GameFolders.Scripts.Enums;
+using _GameFolders.Scripts.Data.UnityObjects;
 using DG.Tweening;
 using UnityEngine;
 
@@ -7,10 +7,10 @@ namespace _GameFolders.Scripts
 {
     public class Jewelry : CollectableObject
     {
+        [SerializeField] private JewelryDataSO jewelryData;
         [SerializeField] private float selectedYPosition = 1f;
-        [SerializeField] private JewelryType type;
         [SerializeField] private Ease idleEase = Ease.InOutSine;
-        public JewelryType Type => type;
+        public JewelryDataSO JewelryData => jewelryData;
         
         private Rigidbody _rigidbody;
         private Collider _collider;
@@ -49,11 +49,13 @@ namespace _GameFolders.Scripts
         public override void Drop()
         {
             _rigidbody.useGravity = true;
+            _rigidbody.isKinematic = false;
         }
 
         public override void Select()
         {
             _rigidbody.useGravity = false;
+            _rigidbody.isKinematic = true;
             transform.DOLocalMoveY(selectedYPosition, 0.2f);
         }
     }

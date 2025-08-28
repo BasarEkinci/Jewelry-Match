@@ -39,7 +39,8 @@ namespace _GameFolders.Scripts
 
         private async UniTaskVoid InsertIfExist(Jewelry collected)
         {
-            int index = _collectedJewelry.FindLastIndex(j => j.Type == collected.Type);
+            int index = _collectedJewelry.
+                FindLastIndex(j => j.JewelryData.JewelryID == collected.JewelryData.JewelryID);
             if (index >= 0)
                 _collectedJewelry.Insert(index + 1, collected);
             else
@@ -50,7 +51,7 @@ namespace _GameFolders.Scripts
             slots[_collectedJewelry.IndexOf(collected)].Animate();
 
             var matchedJewels = _collectedJewelry
-                .Where(j => j.Type == collected.Type)
+                .Where(j => j.JewelryData.JewelryID == collected.JewelryData.JewelryID)
                 .ToList();
 
             if (matchedJewels.Count == 3)
