@@ -1,5 +1,4 @@
 ﻿using _GameFolders.Scripts.Enums;
-using _GameFolders.Scripts.Events;
 using UnityEngine;
 
 namespace _GameFolders.Scripts.Managers
@@ -26,7 +25,6 @@ namespace _GameFolders.Scripts.Managers
         
         public void ChangeState(GameState newState)
         {
-            EventManager.Publish(new GameStateEvent { State = newState });
             _currentState = newState;
         }
     }
