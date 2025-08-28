@@ -3,7 +3,6 @@
     public enum GameState
     {
         GameStart,
-        GamePlaying,
         GamePaused,
         GameOver,
         GameWin

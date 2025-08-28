@@ -25,8 +25,7 @@ namespace _GameFolders.Scripts
             {
                 return;
             }
-            GameStateManager.Instance.ChangeState(GameState.GameOver);
-            Debug.Log("Game Over");
+            GameStateManager.Instance.OnGameStateChanged.Invoke(GameState.GameOver);
         }
 
         private bool WillMatchWithIncoming(Jewelry incoming)

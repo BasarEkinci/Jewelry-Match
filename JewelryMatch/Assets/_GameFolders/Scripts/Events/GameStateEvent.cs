@@ -1,9 +1,9 @@
-﻿using _GameFolders.Scripts.Enums;
+﻿using _GameFolders.Scripts.Extensions;
 
 namespace _GameFolders.Scripts.Events
 {
-    public class GameStateEvent
+    public class GameStateEvent : MonoSingleton<GameStateEvent>
     {
-        public GameState State;
+        
     }
 }

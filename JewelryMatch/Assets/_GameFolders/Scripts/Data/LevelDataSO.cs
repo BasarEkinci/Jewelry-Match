@@ -1,8 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace _GameFolders.Scripts.Data
 {
+    [Serializable]
+    public struct TargetData
+    {
+        public Jewelry targetJewelry;
+        public int requiredAmount;
+    }
+    
     [CreateAssetMenu(fileName = "LevelDataSO", menuName = "ScriptableObjects/LevelData", order = 0)]
     public class LevelDataSO : ScriptableObject
     {
@@ -11,13 +19,13 @@ namespace _GameFolders.Scripts.Data
         
         [Header("Jewelry Data Lists")]
         [SerializeField] private List<Jewelry> jewelriesToSpawn;
-        [SerializeField] private List<Jewelry> targetJewelries;
+        [SerializeField] private List<TargetData> targetData;
         
         /*
          * Powerups will be added
          */
         
         public List<Jewelry> JewelriesToSpawn => jewelriesToSpawn;
-        public List<Jewelry> TargetJewelries => targetJewelries;
+        public List<TargetData> TargetData => targetData;
     }
 }

@@ -1,31 +1,26 @@
-﻿using _GameFolders.Scripts.Enums;
-using UnityEngine;
+﻿using System;
+using _GameFolders.Scripts.Enums;
+using _GameFolders.Scripts.Extensions;
 
 namespace _GameFolders.Scripts.Managers
 {
-    public class GameStateManager : MonoBehaviour
+    public class GameStateManager : MonoSingleton<GameStateManager>
     {
         public static GameStateManager Instance;
-
+        
+        public Action<GameState> OnGameStateChanged;
+        
         public GameState CurrentState => _currentState;
         private GameState _currentState;
-        
-        private void Awake()
+
+        private void OnEnable()
         {
-            if (Instance == null)
-            {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+            OnGameStateChanged += state => _currentState = state;
         }
-        
-        public void ChangeState(GameState newState)
+
+        private void OnDisable()
         {
-            _currentState = newState;
+            OnGameStateChanged -= state => _currentState = state;
         }
     }
 }
