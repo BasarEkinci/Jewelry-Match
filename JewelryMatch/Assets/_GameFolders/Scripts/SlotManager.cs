@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using _GameFolders.Scripts.Enums;
+using _GameFolders.Scripts.Managers;
+using _GameFolders.Scripts.Objects;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
@@ -13,17 +16,23 @@ namespace _GameFolders.Scripts
         [SerializeField] private List<Slot> slots;
         
         private readonly List<Jewelry> _collectedJewelry = new();
-        
         public void AddJewelry(Jewelry jewelry)
         {
-            if (_collectedJewelry.Count < slotsTransforms.Count)
+            InsertIfExist(jewelry).Forget();
+            bool hasSpace = _collectedJewelry.Count < slotsTransforms.Count;
+            bool completesTriplet = WillMatchWithIncoming(jewelry);
+            if (hasSpace || completesTriplet)
             {
-                InsertIfExist(jewelry).Forget();
+                return;
             }
-            else
-            {
-                Debug.Log("No available slots!");
-            }
+            GameStateManager.Instance.ChangeState(GameState.GameOver);
+            Debug.Log("Game Over");
+        }
+
+        private bool WillMatchWithIncoming(Jewelry incoming)
+        {
+            int same = _collectedJewelry.Count(j => j.JewelryData.JewelryID == incoming.JewelryData.JewelryID);
+            return same == 3;
         }
 
         private float UpdateJewelryPositions()
@@ -65,14 +74,21 @@ namespace _GameFolders.Scripts
 
         private async void MatchJewelry(List<Jewelry> matched)
         {
-            float targetXPosition = slotsTransforms[_collectedJewelry.IndexOf(matched[1])].position.x;
-            matched[0].transform.DOMoveX(targetXPosition, 0.1f);
-            matched[2].transform.DOMoveX(targetXPosition, 0.1f);
-            await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
-            foreach (var jewelry in matched)
+            try
             {
-                _collectedJewelry.Remove(jewelry);
-                jewelry.OnMatch();
+                float targetXPosition = slotsTransforms[_collectedJewelry.IndexOf(matched[1])].position.x;
+                matched[0].transform.DOMoveX(targetXPosition, 0.1f);
+                matched[2].transform.DOMoveX(targetXPosition, 0.1f);
+                await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
+                foreach (var jewelry in matched)
+                {
+                    _collectedJewelry.Remove(jewelry);
+                    jewelry.OnMatch();
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error during matching jewelry", e);
             }
         }
     }

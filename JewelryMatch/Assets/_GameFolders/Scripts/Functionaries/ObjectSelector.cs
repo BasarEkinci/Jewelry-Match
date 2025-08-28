@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using _GameFolders.Scripts.Enums;
+using _GameFolders.Scripts.Managers;
+using UnityEngine;
 
-namespace _GameFolders.Scripts
+namespace _GameFolders.Scripts.Functionaries
 {
     public class ObjectSelector : MonoBehaviour
     {
@@ -15,6 +17,7 @@ namespace _GameFolders.Scripts
 
         private void Update()
         {
+            if (GameStateManager.Instance.CurrentState != GameState.GamePlaying) return;
             if (Input.GetMouseButton(0))
             {
                 Ray ray = _camera.ScreenPointToRay(Input.mousePosition);

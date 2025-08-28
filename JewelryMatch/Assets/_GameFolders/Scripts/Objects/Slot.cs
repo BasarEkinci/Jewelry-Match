@@ -1,7 +1,7 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 
-namespace _GameFolders.Scripts
+namespace _GameFolders.Scripts.Objects
 {
     public class Slot : MonoBehaviour
     {
