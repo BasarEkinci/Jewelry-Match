@@ -187,7 +187,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -251,6 +251,7 @@ GameObject:
   - component: {fileID: 1247018354}
   - component: {fileID: 1247018353}
   - component: {fileID: 1247018352}
+  - component: {fileID: 1247018355}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -332,6 +333,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1247018355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247018351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 0
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!4 &210863056938712713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3114055575624495881, guid: a85c6b6d84fc2644e98395e4432e3311, type: 3}
@@ -363,10 +408,6 @@ PrefabInstance:
     - target: {fileID: 3262552810321494531, guid: 89afb172eb8735b40929d9810204e8e9, type: 3}
       propertyPath: m_Name
       value: T_Gold
-      objectReference: {fileID: 0}
-    - target: {fileID: 3262552810321494531, guid: 89afb172eb8735b40929d9810204e8e9, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4782723038620054739, guid: 89afb172eb8735b40929d9810204e8e9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -424,10 +465,6 @@ PrefabInstance:
     - target: {fileID: 928978994387364220, guid: bf990962c2facb5488b9a82ff61660ec, type: 3}
       propertyPath: m_Name
       value: D_Gold
-      objectReference: {fileID: 0}
-    - target: {fileID: 928978994387364220, guid: bf990962c2facb5488b9a82ff61660ec, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9020446535978837774, guid: bf990962c2facb5488b9a82ff61660ec, type: 3}
       propertyPath: m_LocalPosition.x
@@ -526,10 +563,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: B_Silver
       objectReference: {fileID: 0}
-    - target: {fileID: 6210305072669491993, guid: 0f0ee9987b7a8a24eb3a6069427bff4c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -608,10 +641,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: C_Gold
       objectReference: {fileID: 0}
-    - target: {fileID: 3382184975798993639, guid: ed4b46321b5ab4749866b4d28d3cec3d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -633,10 +662,6 @@ PrefabInstance:
     - target: {fileID: 1924873944805053385, guid: b18016be2512faa4091b53dc66c6f162, type: 3}
       propertyPath: m_Name
       value: S_Gold
-      objectReference: {fileID: 0}
-    - target: {fileID: 1924873944805053385, guid: b18016be2512faa4091b53dc66c6f162, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7346933585880454854, guid: b18016be2512faa4091b53dc66c6f162, type: 3}
       propertyPath: m_LocalPosition.x
@@ -735,10 +760,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: J_Gold
       objectReference: {fileID: 0}
-    - target: {fileID: 4588704206583219181, guid: a85c6b6d84fc2644e98395e4432e3311, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -808,10 +829,6 @@ PrefabInstance:
     - target: {fileID: 2268497104565723465, guid: a8db0553db80468429a5dbe4c342096f, type: 3}
       propertyPath: m_Name
       value: Z_Gold
-      objectReference: {fileID: 0}
-    - target: {fileID: 2268497104565723465, guid: a8db0553db80468429a5dbe4c342096f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5523817270931471698, guid: a8db0553db80468429a5dbe4c342096f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -910,10 +927,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: L_Gold
       objectReference: {fileID: 0}
-    - target: {fileID: 8572995874357940333, guid: f56a8a12148b1be439103f69eb28af13, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -976,10 +989,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: M_Gold
       objectReference: {fileID: 0}
-    - target: {fileID: 5297868322791653716, guid: 293a4c164551ec345aed396cadf26c8e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1022,10 +1031,6 @@ PrefabInstance:
     - target: {fileID: 3473218861825338462, guid: 7280427d75c6e594c820cf4fab011cc8, type: 3}
       propertyPath: m_Name
       value: P_Gold
-      objectReference: {fileID: 0}
-    - target: {fileID: 3473218861825338462, guid: 7280427d75c6e594c820cf4fab011cc8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3495396124316331994, guid: 7280427d75c6e594c820cf4fab011cc8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1089,10 +1094,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: S_Silver
       objectReference: {fileID: 0}
-    - target: {fileID: 3241693601430071100, guid: fc03162ddc74fd3479b63035daaf47ae, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8300596266641027107, guid: fc03162ddc74fd3479b63035daaf47ae, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1149,10 +1150,6 @@ PrefabInstance:
     - target: {fileID: 192605976339133456, guid: 1bb00a1cddb09b747912803903cf3e6c, type: 3}
       propertyPath: m_Name
       value: Y_Gold
-      objectReference: {fileID: 0}
-    - target: {fileID: 192605976339133456, guid: 1bb00a1cddb09b747912803903cf3e6c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2141086454464276842, guid: 1bb00a1cddb09b747912803903cf3e6c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1211,10 +1208,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: K_Gold
       objectReference: {fileID: 0}
-    - target: {fileID: 1019265445589160545, guid: 6de36b42ea503b1458b65d5a219c5d36, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2941783056098905165, guid: 6de36b42ea503b1458b65d5a219c5d36, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1271,10 +1264,6 @@ PrefabInstance:
     - target: {fileID: 250173257840461699, guid: c231482d6a9f51e4b8484d6ee57495be, type: 3}
       propertyPath: m_Name
       value: H_Silver
-      objectReference: {fileID: 0}
-    - target: {fileID: 250173257840461699, guid: c231482d6a9f51e4b8484d6ee57495be, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2323582600710649514, guid: c231482d6a9f51e4b8484d6ee57495be, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1373,10 +1362,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: A_Gold
       objectReference: {fileID: 0}
-    - target: {fileID: 2902679437429745382, guid: cd2de8365ebe300478aabe2346487d0b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1439,10 +1424,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: I_Gold
       objectReference: {fileID: 0}
-    - target: {fileID: 7137072974678254209, guid: b75bf10164c8dc142beff1c5e4ae6b8a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1469,10 +1450,6 @@ PrefabInstance:
     - target: {fileID: 4057494146939388936, guid: 385332a9c93c1ba4a969863e68e8fd48, type: 3}
       propertyPath: m_Name
       value: I_Silver
-      objectReference: {fileID: 0}
-    - target: {fileID: 4057494146939388936, guid: 385332a9c93c1ba4a969863e68e8fd48, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6874817872764291330, guid: 385332a9c93c1ba4a969863e68e8fd48, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1576,10 +1553,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: E_Gold
       objectReference: {fileID: 0}
-    - target: {fileID: 5170466102922763288, guid: 8cfb7390bb290104d9356169c1835287, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1642,10 +1615,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: F_Silver
       objectReference: {fileID: 0}
-    - target: {fileID: 6894817564987308399, guid: 68d72bbf76f09d941a8d2ec8360eaf0d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1662,10 +1631,6 @@ PrefabInstance:
     - target: {fileID: 1315168856202265263, guid: e8a27d80d308e9b4aa7b1b75fba56b6f, type: 3}
       propertyPath: m_Name
       value: R_Silver
-      objectReference: {fileID: 0}
-    - target: {fileID: 1315168856202265263, guid: e8a27d80d308e9b4aa7b1b75fba56b6f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7586800178726095129, guid: e8a27d80d308e9b4aa7b1b75fba56b6f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1764,10 +1729,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: J_Silver
       objectReference: {fileID: 0}
-    - target: {fileID: 9219265694998614167, guid: bdf97fbdea33bbb4f949256e1d87bc26, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1830,10 +1791,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: C_Silver
       objectReference: {fileID: 0}
-    - target: {fileID: 4099456708567038611, guid: 762da12b54727f34b8d548885e56b191, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1850,10 +1807,6 @@ PrefabInstance:
     - target: {fileID: 2431117333369024742, guid: 35d65531f591d0c429b2c0562d982740, type: 3}
       propertyPath: m_Name
       value: H_Gold
-      objectReference: {fileID: 0}
-    - target: {fileID: 2431117333369024742, guid: 35d65531f591d0c429b2c0562d982740, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3786988651506103061, guid: 35d65531f591d0c429b2c0562d982740, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1945,10 +1898,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: F_Gold
       objectReference: {fileID: 0}
-    - target: {fileID: 8033970467547420698, guid: f29a239904d43f44294d222eb30fbf65, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8080858199711434529, guid: f29a239904d43f44294d222eb30fbf65, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2037,10 +1986,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: G_Silver
       objectReference: {fileID: 0}
-    - target: {fileID: 3077849045034991122, guid: aa54b74487f9bde4cbd8ad4c84c8e79e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8323978205130622128, guid: aa54b74487f9bde4cbd8ad4c84c8e79e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2112,10 +2057,6 @@ PrefabInstance:
     - target: {fileID: 2040903313467269619, guid: 239ab0ace0c050746a71bdd4f4bb0caa, type: 3}
       propertyPath: m_Name
       value: V_Silver
-      objectReference: {fileID: 0}
-    - target: {fileID: 2040903313467269619, guid: 239ab0ace0c050746a71bdd4f4bb0caa, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8521331996955084563, guid: 239ab0ace0c050746a71bdd4f4bb0caa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2219,10 +2160,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: B_Gold
       objectReference: {fileID: 0}
-    - target: {fileID: 7267469050339278642, guid: 35f1cb8e150310d4b993196883653d78, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2315,10 +2252,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: G_Gold
       objectReference: {fileID: 0}
-    - target: {fileID: 7249986949839884999, guid: 65f0bc7667fade245bb1096c17a4f3df, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2375,10 +2308,6 @@ PrefabInstance:
     - target: {fileID: 8622483400845069227, guid: 50635b5ffdf82c64a976076c4f44b686, type: 3}
       propertyPath: m_Name
       value: A_Silver
-      objectReference: {fileID: 0}
-    - target: {fileID: 8622483400845069227, guid: 50635b5ffdf82c64a976076c4f44b686, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2447,10 +2376,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Y_Silver
       objectReference: {fileID: 0}
-    - target: {fileID: 6981985398760863932, guid: 6a13cecb29d9113468e4fadf3bfd0992, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2467,10 +2392,6 @@ PrefabInstance:
     - target: {fileID: 4175007100768557854, guid: e44eb7776f6ad9b4b835412661dc458e, type: 3}
       propertyPath: m_Name
       value: O_Gold
-      objectReference: {fileID: 0}
-    - target: {fileID: 4175007100768557854, guid: e44eb7776f6ad9b4b835412661dc458e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5498757091409823830, guid: e44eb7776f6ad9b4b835412661dc458e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2538,10 +2459,6 @@ PrefabInstance:
     - target: {fileID: 6033979137091246025, guid: e36140dc027fb0649a4742efac720649, type: 3}
       propertyPath: m_Name
       value: N_Gold
-      objectReference: {fileID: 0}
-    - target: {fileID: 6033979137091246025, guid: e36140dc027fb0649a4742efac720649, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6232772446664221476, guid: e36140dc027fb0649a4742efac720649, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2640,10 +2557,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: N_Silver
       objectReference: {fileID: 0}
-    - target: {fileID: 4029658878161975169, guid: 5ad27e0be868b9142b1a326fcf92b962, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2665,10 +2578,6 @@ PrefabInstance:
     - target: {fileID: 1076492128797545820, guid: baf2fffe9d6296145b7c867d077253b7, type: 3}
       propertyPath: m_Name
       value: L_Silver
-      objectReference: {fileID: 0}
-    - target: {fileID: 1076492128797545820, guid: baf2fffe9d6296145b7c867d077253b7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4392332713879325815, guid: baf2fffe9d6296145b7c867d077253b7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2767,10 +2676,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: M_Silver
       objectReference: {fileID: 0}
-    - target: {fileID: 8576170612110273384, guid: c08ad28ef43a5234fb2199eecac613a9, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2848,10 +2753,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: D_Silver
       objectReference: {fileID: 0}
-    - target: {fileID: 8169754942615318025, guid: 78be1a0dc8e95dd48ade39140997e565, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2868,10 +2769,6 @@ PrefabInstance:
     - target: {fileID: 1646768763300148178, guid: 020ef6647fc4e134c88e6f7cdd6cef79, type: 3}
       propertyPath: m_Name
       value: P_Silver
-      objectReference: {fileID: 0}
-    - target: {fileID: 1646768763300148178, guid: 020ef6647fc4e134c88e6f7cdd6cef79, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2432129003405890603, guid: 020ef6647fc4e134c88e6f7cdd6cef79, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2970,10 +2867,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Z_Silver
       objectReference: {fileID: 0}
-    - target: {fileID: 8779942481465003068, guid: d05fce6190ec19d4ca078f3d35d065a7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2990,10 +2883,6 @@ PrefabInstance:
     - target: {fileID: 5080713360773172963, guid: 49f86191aeadca84bb8b0269be65363c, type: 3}
       propertyPath: m_Name
       value: R_Gold
-      objectReference: {fileID: 0}
-    - target: {fileID: 5080713360773172963, guid: 49f86191aeadca84bb8b0269be65363c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8395178362352140592, guid: 49f86191aeadca84bb8b0269be65363c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3056,10 +2945,6 @@ PrefabInstance:
     - target: {fileID: 7418102959614387397, guid: a926a33b3b43c4f4298cc0447e121daf, type: 3}
       propertyPath: m_Name
       value: K_Silver
-      objectReference: {fileID: 0}
-    - target: {fileID: 7418102959614387397, guid: a926a33b3b43c4f4298cc0447e121daf, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8981021669207586034, guid: a926a33b3b43c4f4298cc0447e121daf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3173,10 +3058,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: T_Silver
       objectReference: {fileID: 0}
-    - target: {fileID: 4358118314626256028, guid: e4920677ff7d6bf49b0874912463b6f0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3234,10 +3115,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: V_Gold
       objectReference: {fileID: 0}
-    - target: {fileID: 5249824423278549011, guid: 712e4a7e16e28404bbd63f5640e89b77, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3254,10 +3131,6 @@ PrefabInstance:
     - target: {fileID: 1500678599840364287, guid: 8000d1d944617c949b9b92935c67315c, type: 3}
       propertyPath: m_Name
       value: U_Silver
-      objectReference: {fileID: 0}
-    - target: {fileID: 1500678599840364287, guid: 8000d1d944617c949b9b92935c67315c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5157104316004641044, guid: 8000d1d944617c949b9b92935c67315c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3321,10 +3194,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: U_Gold
       objectReference: {fileID: 0}
-    - target: {fileID: 5706763895641363455, guid: 3cac93df8727eb9489dc358f9665d362, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9184801771429175381, guid: 3cac93df8727eb9489dc358f9665d362, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3381,10 +3250,6 @@ PrefabInstance:
     - target: {fileID: 2875635409101780326, guid: e4681c858a6a56440add3f8ffc64c990, type: 3}
       propertyPath: m_Name
       value: E_Silver
-      objectReference: {fileID: 0}
-    - target: {fileID: 2875635409101780326, guid: e4681c858a6a56440add3f8ffc64c990, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6034119701953351793, guid: e4681c858a6a56440add3f8ffc64c990, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3482,10 +3347,6 @@ PrefabInstance:
     - target: {fileID: 1729027638223380189, guid: 79212c5601b400b4d9ab9ba3e5b87208, type: 3}
       propertyPath: m_Name
       value: O_Silver
-      objectReference: {fileID: 0}
-    - target: {fileID: 1729027638223380189, guid: 79212c5601b400b4d9ab9ba3e5b87208, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
