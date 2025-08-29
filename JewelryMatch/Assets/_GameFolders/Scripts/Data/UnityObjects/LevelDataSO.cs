@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using _GameFolders.Scripts.Data.ValueObjects;
 using UnityEngine;
 
@@ -17,8 +18,14 @@ namespace _GameFolders.Scripts.Data.UnityObjects
         /*
          * Powerups will be added
          */
-        
-        public List<Jewelry> JewelriesToSpawn => jewelriesToSpawn;
         public List<TargetData> TargetData => targetData;
+        public List<Jewelry> GetFinalSpawnJewelries()
+        {
+            var targetJewelries = targetData.Select(t => t.targetJewelry);
+            return jewelriesToSpawn
+                .Concat(targetJewelries)
+                .Distinct()
+                .ToList();
+        }
     }
 }
