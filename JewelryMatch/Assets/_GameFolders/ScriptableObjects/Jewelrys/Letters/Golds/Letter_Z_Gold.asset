@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb89c4560aeb43dfb4f6ce84e32defcf, type: 3}
   m_Name: Letter_Z_Gold
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 9c00d7f07483deb498f2c4b5183d9fd4, type: 3}
   jewelryID: LZG

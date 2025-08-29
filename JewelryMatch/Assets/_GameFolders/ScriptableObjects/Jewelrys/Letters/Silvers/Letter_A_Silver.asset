@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb89c4560aeb43dfb4f6ce84e32defcf, type: 3}
   m_Name: Letter_A_Silver
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: c38e1ad95ab7194409f089c923d11c39, type: 3}
   jewelryID: LAS
