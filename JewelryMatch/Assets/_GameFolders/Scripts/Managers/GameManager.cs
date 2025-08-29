@@ -1,30 +1,12 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using System;
+using _GameFolders.Scripts.Enums;
+using _GameFolders.Scripts.Extensions;
 
 namespace _GameFolders.Scripts.Managers
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : MonoSingleton<GameManager>
     {
-        [SerializeField] private LevelManager levelManager;
-        
-        [SerializeField] private TMP_Text requiredJewelText;
-        [SerializeField] private TMP_Text requiredJewelCountText;
-        
-        
-        private int _requiredJewelCount;
-        private int _currentJewelCount;
-        private string _requiredJewelID;
-
-        private void OnEnable()
-        {
-            if (levelManager != null)
-            {
-                _requiredJewelCount = levelManager.LevelData.TargetData[0].requiredAmount;
-                _requiredJewelID = levelManager.LevelData.TargetData[0].targetJewelry.JewelryData.JewelryID;
-            }
-            
-            requiredJewelCountText.text = _requiredJewelCount.ToString();
-            requiredJewelText.text = _requiredJewelID;
-        }
+        public Action<GameState> OnGameStateChanged;
+        private GameState _currentState;
     }
 }

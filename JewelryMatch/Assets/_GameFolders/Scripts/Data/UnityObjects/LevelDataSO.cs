@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using _GameFolders.Scripts.Data.ValueObjects;
 using UnityEngine;
 
-namespace _GameFolders.Scripts.Data
+namespace _GameFolders.Scripts.Data.UnityObjects
 {
-    [Serializable]
-    public struct TargetData
-    {
-        public Jewelry targetJewelry;
-        public int requiredAmount;
-    }
-    
     [CreateAssetMenu(fileName = "LevelDataSO", menuName = "ScriptableObjects/LevelData", order = 0)]
     public class LevelDataSO : ScriptableObject
     {

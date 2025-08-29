@@ -1,21 +1,36 @@
-﻿using UnityEngine;
+﻿using System;
+using _GameFolders.Scripts.Enums;
+using _GameFolders.Scripts.Managers;
+using UnityEngine;
 
 namespace _GameFolders.Scripts.Functionaries
 {
     public class ObjectSelector : MonoBehaviour
     {
         [SerializeField] private SlotManager slotManager;
+        
         private Jewelry _currentJewelry; 
         private Camera _camera;
+        private GameState _currentState;
 
         private void Awake()
         {
             _camera = Camera.main;
         }
 
+        private void OnEnable()
+        {
+            GameManager.Instance.OnGameStateChanged += state => _currentState = state;
+        }
+        
+        private void OnDisable()
+        {
+            GameManager.Instance.OnGameStateChanged -= state => _currentState = state;
+        }
+
         private void Update()
         {
-            //if (GameStateManager.Instance.CurrentState != GameState.GameStart) return;
+            if (_currentState != GameState.GameStart) return;
             if (Input.GetMouseButton(0))
             {
                 Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
