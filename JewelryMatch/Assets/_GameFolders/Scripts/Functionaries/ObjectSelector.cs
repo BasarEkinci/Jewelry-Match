@@ -1,6 +1,7 @@
 ﻿using System;
 using _GameFolders.Scripts.Enums;
 using _GameFolders.Scripts.Managers;
+using _GameFolders.Scripts.Objects;
 using UnityEngine;
 
 namespace _GameFolders.Scripts.Functionaries

@@ -31,8 +31,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -150,5 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jewelryData: {fileID: 11400000, guid: 7119678f5e306c8419b03c3e85f7ce72, type: 2}
+  rb: {fileID: 1430829574596413206}
+  coll: []
+  mesh: {fileID: 0}
   selectedYPosition: 1
-  idleEase: 4

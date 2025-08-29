@@ -1,25 +1,34 @@
+using System.Collections.Generic;
 using _GameFolders.Scripts.Abstracts;
 using _GameFolders.Scripts.Data.UnityObjects;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Rendering;
 
-namespace _GameFolders.Scripts
+namespace _GameFolders.Scripts.Objects
 {
     public class Jewelry : CollectableObject
     {
+        [Header("Components")]
         [SerializeField] private JewelryDataSO jewelryData;
+        
+        [Header("Settings")]
         [SerializeField] private float selectedYPosition = 1f;
-        [SerializeField] private Ease idleEase = Ease.InOutSine;
+        [SerializeField] private float collectedScale = 0.6f;
+        [SerializeField] private float scaleDurationAfterCollect = 0.1f;
+        
         public JewelryDataSO JewelryData => jewelryData;
-        
-        private Rigidbody _rigidbody;
-        private Collider _collider;
+
         private Tween _hoverTween;
-        
+        private Rigidbody _rb;
+        private List<Collider> _coll; //Some jewelry has multiple colliders
+        private MeshRenderer _mesh;
+
         private void Awake()
         {
-            _rigidbody = GetComponent<Rigidbody>();
-            _collider = GetComponent<Collider>();
+            _rb = GetComponent<Rigidbody>();
+            _coll = new List<Collider>(GetComponents<Collider>());
+            _mesh = GetComponentInChildren<MeshRenderer>();
         }
 
         private void OnDestroy()
@@ -34,9 +43,10 @@ namespace _GameFolders.Scripts
 
         public override void Collect()
         {
-            transform.DOScale(transform.localScale / 2f, 0.1f);
-            _rigidbody.isKinematic = true;
-            _collider.enabled = false;
+            transform.DOScale(collectedScale, scaleDurationAfterCollect);
+            _rb.isKinematic = true;
+            _coll.ForEach(c=> c.enabled = false);
+            _mesh.shadowCastingMode = ShadowCastingMode.Off;
         }
 
         public void OnMatch()
@@ -48,14 +58,14 @@ namespace _GameFolders.Scripts
         
         public override void Drop()
         {
-            _rigidbody.useGravity = true;
-            _rigidbody.isKinematic = false;
+            _rb.useGravity = true;
+            _rb.isKinematic = false;
         }
 
         public override void Select()
         {
-            _rigidbody.useGravity = false;
-            _rigidbody.isKinematic = true;
+            _rb.useGravity = false;
+            _rb.isKinematic = true;
             transform.DOLocalMoveY(selectedYPosition, 0.2f);
         }
     }

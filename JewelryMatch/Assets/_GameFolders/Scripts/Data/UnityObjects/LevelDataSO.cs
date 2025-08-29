@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using _GameFolders.Scripts.Data.ValueObjects;
+using _GameFolders.Scripts.Objects;
 using UnityEngine;
 
 namespace _GameFolders.Scripts.Data.UnityObjects

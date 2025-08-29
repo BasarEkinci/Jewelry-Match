@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4759025514463931041}
   - component: {fileID: 7055200378267169105}
   - component: {fileID: 3774509114630575493}
+  - component: {fileID: 8438598949155289937}
   m_Layer: 0
   m_Name: U_Silver
   m_TagString: Untagged
@@ -30,8 +31,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.0006418, y: 0, z: -1.4967246}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -101,8 +102,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jewelryData: {fileID: 11400000, guid: 559eba4163a3ebd498ecdf2ae358dd70, type: 2}
+  rb: {fileID: 6038495215046560413, guid: ed4b46321b5ab4749866b4d28d3cec3d, type: 3}
+  coll: []
+  mesh: {fileID: 4812779515000261687, guid: ed4b46321b5ab4749866b4d28d3cec3d, type: 3}
   selectedYPosition: 1
-  idleEase: 4
 --- !u!65 &3774509114630575493
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -124,3 +127,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5861852, y: 0.20295909, z: 0.66358995}
   m_Center: {x: -0.0006417781, y: 0, z: -0.0032754391}
+--- !u!54 &8438598949155289937
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500678599840364287}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

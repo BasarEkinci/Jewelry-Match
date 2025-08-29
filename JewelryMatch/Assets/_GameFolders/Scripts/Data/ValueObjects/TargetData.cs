@@ -1,4 +1,5 @@
 ﻿using System;
+using _GameFolders.Scripts.Objects;
 
 namespace _GameFolders.Scripts.Data.ValueObjects
 {

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 299659606147690804}
   - component: {fileID: 2780450153672626518}
   - component: {fileID: 3308096395085611644}
+  - component: {fileID: 6628424383814395024}
   m_Layer: 0
   m_Name: L_Silver
   m_TagString: Untagged
@@ -31,8 +32,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.9679999, y: 0, z: -1.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -102,8 +103,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jewelryData: {fileID: 11400000, guid: 311a2a8c5e9a70d43a8f9c006719e4cb, type: 2}
+  rb: {fileID: 6038495215046560413, guid: ed4b46321b5ab4749866b4d28d3cec3d, type: 3}
+  coll: []
+  mesh: {fileID: 4812779515000261687, guid: ed4b46321b5ab4749866b4d28d3cec3d, type: 3}
   selectedYPosition: 1
-  idleEase: 4
 --- !u!136 &2780450153672626518
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -150,3 +153,30 @@ CapsuleCollider:
   m_Height: 0.50407887
   m_Direction: 0
   m_Center: {x: -0.035896778, y: -0.000000029802322, z: 0.25904036}
+--- !u!54 &6628424383814395024
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076492128797545820}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
