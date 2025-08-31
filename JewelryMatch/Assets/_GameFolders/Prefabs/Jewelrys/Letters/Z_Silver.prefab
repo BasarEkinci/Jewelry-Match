@@ -150,7 +150,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jewelryData: {fileID: 11400000, guid: 5a46cc94ac2b2464996fa72b941e8e3e, type: 2}
-  rb: {fileID: 6038495215046560413, guid: ed4b46321b5ab4749866b4d28d3cec3d, type: 3}
-  coll: []
-  mesh: {fileID: 4812779515000261687, guid: ed4b46321b5ab4749866b4d28d3cec3d, type: 3}
-  selectedYPosition: 1
+  selectedYPosition: 0.5
+  collectedScale: 0.6
+  scaleDurationAfterCollect: 0.1

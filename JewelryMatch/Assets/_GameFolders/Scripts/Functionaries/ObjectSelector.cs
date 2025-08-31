@@ -1,5 +1,4 @@
-﻿using System;
-using _GameFolders.Scripts.Enums;
+﻿using _GameFolders.Scripts.Enums;
 using _GameFolders.Scripts.Managers;
 using _GameFolders.Scripts.Objects;
 using UnityEngine;
@@ -21,12 +20,12 @@ namespace _GameFolders.Scripts.Functionaries
 
         private void OnEnable()
         {
-            GameManager.Instance.OnGameStateChanged += state => _currentState = state;
+            GameEventManager.OnGameStateChanged += state => _currentState = state;
         }
         
         private void OnDisable()
         {
-            GameManager.Instance.OnGameStateChanged -= state => _currentState = state;
+            GameEventManager.OnGameStateChanged -= state => _currentState = state;
         }
 
         private void Update()
@@ -59,6 +58,7 @@ namespace _GameFolders.Scripts.Functionaries
                 { 
                     _currentJewelry.Collect();
                     slotManager.AddJewelry(_currentJewelry);
+                    GameEventManager.InvokeCollectJewelry(_currentJewelry.JewelryData.JewelryID);
                     _currentJewelry = null; 
                 } 
             }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using _GameFolders.Scripts.Data.ValueObjects;
-using _GameFolders.Scripts.Objects;
+using UnityEditor;
 using UnityEngine;
 
 namespace _GameFolders.Scripts.Data.UnityObjects
@@ -13,20 +13,41 @@ namespace _GameFolders.Scripts.Data.UnityObjects
         [SerializeField] private float levelTime = 60f;
         
         [Header("Jewelry Data Lists")]
-        [SerializeField] private List<Jewelry> jewelriesToSpawn;
-        [SerializeField] private List<TargetData> targetData;
+        [SerializeField] private List<JewelryToSpawnData> otherJewelriesToSpawn;
+        [SerializeField] private List<JewelryToSpawnData> targetData;
         
         /*
          * Powerups will be added
          */
-        public List<TargetData> TargetData => targetData;
-        public List<Jewelry> GetFinalSpawnJewelries()
+        
+        public float LevelTime => levelTime;
+        public List<JewelryToSpawnData> TargetData => targetData;
+        public List<JewelryToSpawnData> OtherJewelriesToSpawn => otherJewelriesToSpawn;
+        
+#if UNITY_EDITOR
+        private void OnValidate()
         {
-            var targetJewelries = targetData.Select(t => t.targetJewelry);
-            return jewelriesToSpawn
-                .Concat(targetJewelries)
-                .Distinct()
+            var targetJewels = targetData.Where(t => t.targetJewelry != null)
+                .Select(t => t.targetJewelry)
                 .ToList();
+            
+            var duplicates = otherJewelriesToSpawn
+                .Where(o => o.targetJewelry != null && targetJewels.Contains(o.targetJewelry))
+                .ToList();
+
+            if (duplicates.Count > 0)
+            {
+                string dupNames = string.Join(", ", duplicates.Select(d => d.targetJewelry.name));
+                
+                otherJewelriesToSpawn = otherJewelriesToSpawn
+                    .Where(o => o.targetJewelry != null && !targetJewels.Contains(o.targetJewelry))
+                    .ToList();
+
+                Debug.LogWarning($"[LevelDataSO] Duplicate object detected at OtherJewelriesToSpawn list: {dupNames}", this);
+                
+                EditorUtility.SetDirty(this);
+            }
         }
+#endif
     }
 }

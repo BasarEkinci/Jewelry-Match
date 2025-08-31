@@ -150,6 +150,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jewelryData: {fileID: 11400000, guid: b911b9c10ba13dc41ac99e26236885ac, type: 2}
-  selectedYPosition: 1
+  selectedYPosition: 0.5
   collectedScale: 0.6
   scaleDurationAfterCollect: 0.1

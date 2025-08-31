@@ -4,9 +4,9 @@ using _GameFolders.Scripts.Objects;
 namespace _GameFolders.Scripts.Data.ValueObjects
 {
     [Serializable]
-    public struct TargetData
+    public struct JewelryToSpawnData
     {
         public Jewelry targetJewelry;
-        public int requiredAmount;
+        public int requiredMatchCount;
     }
 }
