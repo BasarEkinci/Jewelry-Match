@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5454561451847745826}
   - component: {fileID: 151731224977677532}
   - component: {fileID: -701229523385118300}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: O_Silver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jewelryData: {fileID: 11400000, guid: 9e1a4ce9c49a57a4b9533ed5cc5d0e49, type: 2}
-  selectedYPosition: 0.5
+  selectedYPosition: 1
   collectedScale: 0.6
   scaleDurationAfterCollect: 0.1
 --- !u!65 &151731224977677532

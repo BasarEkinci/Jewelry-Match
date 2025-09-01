@@ -5,6 +5,7 @@
         GameStart,
         GamePaused,
         GameOver,
-        GameWin
+        GameWin,
+        MainMenu
     }
 }

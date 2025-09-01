@@ -2,7 +2,6 @@
 using _GameFolders.Scripts.Data.UnityObjects;
 using _GameFolders.Scripts.Data.ValueObjects;
 using _GameFolders.Scripts.Enums;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace _GameFolders.Scripts.Managers
@@ -27,16 +26,15 @@ namespace _GameFolders.Scripts.Managers
         {
             if (state == GameState.GameStart)
             {
-                SpawnJewelry().Forget();
+                SpawnJewelry();
             }
         }
 
-        private async UniTaskVoid SpawnJewelry()
+        private void SpawnJewelry()
         {
             for (int i = 0; i < InitializeSpawnList().Count; i++)
             {
                 Instantiate(InitializeSpawnList()[i].targetJewelry, GenerateRandomPosition(), Quaternion.identity);
-                await UniTask.Delay(250);
             }            
         }
 

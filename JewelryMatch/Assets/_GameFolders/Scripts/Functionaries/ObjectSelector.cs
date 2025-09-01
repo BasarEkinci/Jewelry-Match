@@ -1,6 +1,7 @@
 ﻿using _GameFolders.Scripts.Enums;
 using _GameFolders.Scripts.Managers;
 using _GameFolders.Scripts.Objects;
+using Sirenix.OdinValidator.Editor;
 using UnityEngine;
 
 namespace _GameFolders.Scripts.Functionaries
@@ -8,7 +9,7 @@ namespace _GameFolders.Scripts.Functionaries
     public class ObjectSelector : MonoBehaviour
     {
         [SerializeField] private SlotManager slotManager;
-        
+        [SerializeField] private LayerMask layerMask;
         private Jewelry _currentJewelry; 
         private Camera _camera;
         private GameState _currentState;
@@ -35,7 +36,7 @@ namespace _GameFolders.Scripts.Functionaries
             {
                 Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
-                if (Physics.Raycast(ray, out hit))
+                if (Physics.Raycast(ray, out hit,Mathf.Infinity,layerMask))
                 {
                     if (hit.collider.TryGetComponent<Jewelry>(out Jewelry collectable))
                     {

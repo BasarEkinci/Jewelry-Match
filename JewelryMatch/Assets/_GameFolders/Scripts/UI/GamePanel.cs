@@ -1,9 +1,10 @@
-﻿using _GameFolders.Scripts.Managers;
+﻿using _GameFolders.Scripts.Enums;
+using _GameFolders.Scripts.Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _GameFolders.Scripts.Functionaries
+namespace _GameFolders.Scripts.UI
 {
     public class GamePanel : MonoBehaviour
     {
@@ -18,16 +19,28 @@ namespace _GameFolders.Scripts.Functionaries
         [SerializeField] private Image levelTimeFillImage;
         
         private float _remainingTime;
+        private GameState _gameState;
         private float _fillAmount;
         private float _levelTime => GameManager.Instance.CurrentLevel.LevelTime;
         private void OnEnable()
         {
+            GameEventManager.OnGameStateChanged += state => _gameState = state;
             levelText.SetText("Level {0}", GameManager.Instance.CurrentLevelIndex + 1);
             _remainingTime = GameManager.Instance.CurrentLevel.LevelTime;
             _fillAmount = 1;
         }
+        
+        private void OnDisable()
+        {
+            GameEventManager.OnGameStateChanged -= state => _gameState = state;
+        }
+
         private void Update()
         {
+            if (_gameState != GameState.GameStart)
+            {
+                return;   
+            }
             if (_remainingTime > 0)
             {
                 _remainingTime -= Time.deltaTime;

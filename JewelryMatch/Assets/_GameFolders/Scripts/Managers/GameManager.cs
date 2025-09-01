@@ -18,7 +18,7 @@ namespace _GameFolders.Scripts.Managers
 
         private void Start()
         {
-            _currentState = GameState.GameStart;
+            _currentState = GameState.MainMenu;
             GameEventManager.InvokeGameStateChanged(_currentState);
         }
 
