@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8080858199711434529}
   - component: {fileID: 8562738224971798404}
   - component: {fileID: 803035952510372347}
-  - component: {fileID: 7102869330135264164}
   - component: {fileID: 4653706870612713478}
   - component: {fileID: 9113347931702259272}
+  - component: {fileID: 4800166643503287552}
   m_Layer: 6
   m_Name: F_Gold
   m_TagString: Untagged
@@ -89,27 +89,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7102869330135264164
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8033970467547420698}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.45514017, y: 0.29566664, z: 0.7734176}
-  m_Center: {x: -0.025058419, y: 0, z: -0.040110677}
 --- !u!54 &4653706870612713478
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -118,7 +97,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8033970467547420698}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -153,3 +132,25 @@ MonoBehaviour:
   selectedYPosition: 1
   collectedScale: 0.6
   scaleDurationAfterCollect: 0.1
+--- !u!64 &4800166643503287552
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8033970467547420698}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7177136366851917053, guid: 93e2442847fc1884ca0b1cd9d6e34747, type: 3}

@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2024689465378331613}
   - component: {fileID: 534960572013721717}
   - component: {fileID: 1898573217354527213}
-  - component: {fileID: 6561001196789380311}
   - component: {fileID: -1195899198159518340}
+  - component: {fileID: -4075070758253534954}
   m_Layer: 6
   m_Name: K_Silver
   m_TagString: Untagged
@@ -105,27 +105,6 @@ MonoBehaviour:
   selectedYPosition: 1
   collectedScale: 0.6
   scaleDurationAfterCollect: 0.1
---- !u!65 &6561001196789380311
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7418102959614387397}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.65139914, y: 0.21441118, z: 0.80335975}
-  m_Center: {x: -0.0255443, y: 0, z: -0.040930137}
 --- !u!54 &-1195899198159518340
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -134,7 +113,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7418102959614387397}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -153,3 +132,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &-4075070758253534954
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7418102959614387397}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 9060274671762602126, guid: 14f791abb6afb4c46b4ff94d349b5f84, type: 3}

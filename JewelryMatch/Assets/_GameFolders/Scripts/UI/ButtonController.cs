@@ -1,36 +1,24 @@
-﻿using System;
-using _GameFolders.Scripts.Enums;
+﻿using _GameFolders.Scripts.Enums;
 using _GameFolders.Scripts.Managers;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace _GameFolders.Scripts.UI
 {
     public class ButtonController : MonoBehaviour
     {
-        [SerializeField] private GameState gameState;
-        private Button _button;
-
-        private void Awake()
+        public void PlayButton()
         {
-            _button = GetComponent<Button>();
-        }
-        
-        private void OnEnable()
-        {
-            _button.onClick.AddListener(HandleButtonAction);
-        }
-        
-        private void OnDisable()
-        {
-            _button.onClick.RemoveListener(HandleButtonAction);
-        }
-
-        private void HandleButtonAction()
-        {
-            if (HealthManager.Instance.HealthAmount == 0 && gameState == GameState.GameStart)
+            if (HealthManager.Instance.HealthAmount == 0)
                 return;
-            GameEventManager.InvokeGameStateChanged(gameState);
+            GameEventManager.InvokeGameStateChanged(GameState.GameStart);
+        }
+        public void ContinueButton()
+        {
+            GameEventManager.InvokeGameStateChanged(GameState.MainMenu);            
+        }
+        public void CloseLosePanel()
+        {
+            GameEventManager.InvokeGameStateChanged(GameState.GameOver);// This is for returning to main menu after losing
         }
     }
 }

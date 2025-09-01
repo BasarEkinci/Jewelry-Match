@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1907451842737945667}
   - component: {fileID: 68995757344747397}
   - component: {fileID: 5235415110515408446}
-  - component: {fileID: 5898731895925680657}
   - component: {fileID: 6097485507381398950}
+  - component: {fileID: -8372340251084337963}
   m_Layer: 6
   m_Name: U_Gold
   m_TagString: Untagged
@@ -105,27 +105,6 @@ MonoBehaviour:
   selectedYPosition: 1
   collectedScale: 0.6
   scaleDurationAfterCollect: 0.1
---- !u!65 &5898731895925680657
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5706763895641363455}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.5861852, y: 0.20295909, z: 0.66358995}
-  m_Center: {x: -0.0006417781, y: 0, z: -0.0032754391}
 --- !u!54 &6097485507381398950
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -134,7 +113,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5706763895641363455}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -153,3 +132,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &-8372340251084337963
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5706763895641363455}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7789202196342314812, guid: 14f791abb6afb4c46b4ff94d349b5f84, type: 3}

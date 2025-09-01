@@ -21,13 +21,13 @@ namespace _GameFolders.Scripts.Objects
 
         private Tween _hoverTween;
         private Rigidbody _rb;
-        private List<Collider> _coll; //Some jewelry has multiple colliders
+        private Collider _coll; //Some jewelry has multiple colliders
         private MeshRenderer _mesh;
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody>();
-            _coll = new List<Collider>(GetComponents<Collider>());
+            _coll = GetComponent<Collider>();
             _mesh = GetComponentInChildren<MeshRenderer>();
         }
 
@@ -45,7 +45,7 @@ namespace _GameFolders.Scripts.Objects
         {
             transform.DOScale(collectedScale, scaleDurationAfterCollect);
             _rb.isKinematic = true;
-            _coll.ForEach(c=> c.enabled = false);
+            _coll.enabled = false;
             _mesh.shadowCastingMode = ShadowCastingMode.Off;
         }
 

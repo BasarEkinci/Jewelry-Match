@@ -6,6 +6,8 @@
         GamePaused,
         GameOver,
         GameWin,
-        MainMenu
+        MainMenu,
+        NoMoreSpaces,
+        TimeOver
     }
 }

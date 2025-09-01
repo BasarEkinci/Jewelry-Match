@@ -27,7 +27,7 @@ namespace _GameFolders.Scripts.Managers
         }
         private void Update()
         {
-            if (_gameState != GameState.MainMenu && _healthAmount == 5) return;
+            if (_healthAmount == 5) return;
             if (_healthAmount < 5)
             {
                 _healthRegenerationTime -= Time.deltaTime;

@@ -8,6 +8,9 @@ namespace _GameFolders.Scripts.Managers
 {
     public class SpawnManager : MonoBehaviour
     {
+        [Header("References")] 
+        [SerializeField] private GameObject jewelryHolder;
+        
         [Header("Spawn Settings")]
         [SerializeField] private Vector3 lowerSpawnBounds;
         [SerializeField] private Vector3 upperSpawnBounds;
@@ -28,13 +31,20 @@ namespace _GameFolders.Scripts.Managers
             {
                 SpawnJewelry();
             }
+            else if (state is GameState.GameOver)
+            {
+                for (int i = jewelryHolder.transform.childCount - 1; i >= 0; i--)
+                {
+                    Destroy(jewelryHolder.transform.GetChild(i).gameObject);
+                }    
+            }
         }
 
         private void SpawnJewelry()
         {
             for (int i = 0; i < InitializeSpawnList().Count; i++)
             {
-                Instantiate(InitializeSpawnList()[i].targetJewelry, GenerateRandomPosition(), Quaternion.identity);
+                Instantiate(InitializeSpawnList()[i].targetJewelry, GenerateRandomPosition(), Quaternion.identity, jewelryHolder.transform);
             }            
         }
 

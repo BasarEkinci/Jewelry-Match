@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using _GameFolders.Scripts.Enums;
-using _GameFolders.Scripts.Managers;
 using _GameFolders.Scripts.Objects;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
-namespace _GameFolders.Scripts
+namespace _GameFolders.Scripts.Managers
 {
     public class SlotManager : MonoBehaviour
     {
@@ -16,6 +15,17 @@ namespace _GameFolders.Scripts
         [SerializeField] private List<Slot> slots;
         
         private readonly List<Jewelry> _collectedJewelry = new();
+
+        private void OnEnable()
+        {
+            GameEventManager.OnGameStateChanged += HandleGameStateChange;
+        }
+
+        private void OnDisable()
+        {
+            GameEventManager.OnGameStateChanged -= HandleGameStateChange;
+        }
+
         public void AddJewelry(Jewelry jewelry)
         {
             InsertIfExist(jewelry).Forget();
@@ -25,7 +35,7 @@ namespace _GameFolders.Scripts
             {
                 return;
             }
-            GameEventManager.InvokeGameStateChanged(GameState.GameOver);
+            GameEventManager.InvokeGameStateChanged(GameState.NoMoreSpaces);
         }
 
         private bool WillMatchWithIncoming(Jewelry incoming)
@@ -88,6 +98,22 @@ namespace _GameFolders.Scripts
             catch (Exception e)
             {
                 throw new Exception("Error during matching jewelry", e);
+            }
+        }
+        
+        private void HandleGameStateChange(GameState state)
+        {
+            if (state is GameState.MainMenu or GameState.GameOver)
+            {
+                foreach (var jew in _collectedJewelry)
+                {
+                    jew.transform.DOScale(Vector3.zero, 0.1f);
+                }
+                for (int i = _collectedJewelry.Count - 1; i >= 0 ; i--)
+                {
+                    Destroy(_collectedJewelry[i].gameObject);
+                    _collectedJewelry.RemoveAt(i);
+                }
             }
         }
     }
