@@ -44,11 +44,9 @@ namespace _GameFolders.Scripts.Managers
                     gamePanel.SetActive(true);
                     break;
                 case GameState.GameWin:
-                    gamePanel.SetActive(false);
                     winPanel.SetActive(true);
                     break;
                 case GameState.NoMoreSpaces:
-                    gamePanel.SetActive(false);
                     slotsFullPanel.SetActive(true);
                     break;
             }

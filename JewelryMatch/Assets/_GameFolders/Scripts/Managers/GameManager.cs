@@ -48,7 +48,7 @@ namespace _GameFolders.Scripts.Managers
                         gameplayObject.SetActive(true);
                     break;
                 case GameState.GameWin:
-                    _currentLevelIndex++;
+                    //_currentLevelIndex++;
                     break;
             }
         }

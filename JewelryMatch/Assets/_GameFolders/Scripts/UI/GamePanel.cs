@@ -20,32 +20,24 @@ namespace _GameFolders.Scripts.UI
         [SerializeField] private Image levelTimeFillImage;
         
         private float _remainingTime;
+        private int _earnedStart;
         private GameState _gameState;
         private float _levelTime => GameManager.Instance.CurrentLevel.LevelTime;
         private void OnEnable()
         {
             GameEventManager.OnGameStateChanged -= state => _gameState = state;
             GameEventManager.OnHourglassCollected += OnHourglassCollected;
+            GameEventManager.OnTargetReached += () => GameEventManager.InvokeLevelCompleted(_earnedStart);
             levelText.SetText("Level {0}", GameManager.Instance.CurrentLevelIndex + 1);
             _remainingTime = GameManager.Instance.CurrentLevel.LevelTime;
         }
-
-        private void OnHourglassCollected(float amount)
-        {
-            _remainingTime += amount;
-            if (_remainingTime > _levelTime)
-            {
-                _remainingTime = _levelTime;
-            }
-            timeText.transform.DOScale(transform.localScale * 1.1f,0.2f).SetLoops(2,LoopType.Yoyo);
-        }
-
+        
         private void OnDisable()
         {
             GameEventManager.OnGameStateChanged -= state => _gameState = state;
             GameEventManager.OnHourglassCollected -= OnHourglassCollected;
+            GameEventManager.OnTargetReached -= () => GameEventManager.InvokeLevelCompleted(_earnedStart);
         }
-
         private void Update()
         {
             if (_gameState != GameState.GameStart)
@@ -58,11 +50,11 @@ namespace _GameFolders.Scripts.UI
                 levelTimeFillImage.fillAmount = _remainingTime / _levelTime;
                 int minutes = Mathf.FloorToInt(_remainingTime / 60f);
                 int seconds = Mathf.FloorToInt(_remainingTime % 60f);
-                timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+                timeText.SetText($"{minutes:00}:{seconds:00}");
             }
             else
             {
-                timeText.text = "00:00";
+                timeText.SetText("00:00");
                 levelTimeFillImage.fillAmount = 0f;
             }
             SetFillImageColor();
@@ -71,13 +63,30 @@ namespace _GameFolders.Scripts.UI
         private void SetFillImageColor()
         {
             float value = _remainingTime;
-
             if (value > _remainingTime / 2)
+            {
                 levelTimeFillImage.color = fillImageInitialColor;
+                _earnedStart = 3;
+            }
             else if (value < _remainingTime / 2)
-                levelTimeFillImage.color = fillImageMediumColor;    
+            {
+                levelTimeFillImage.color = fillImageMediumColor;
+                _earnedStart = 2;
+            }
             else if (value < _remainingTime / 4)
+            {
                 levelTimeFillImage.color = fillImageDangerColor;
+                _earnedStart = 1;
+            }
+        }
+        private void OnHourglassCollected(float amount)
+        {
+            _remainingTime += amount;
+            if (_remainingTime > _levelTime)
+            {
+                _remainingTime = _levelTime;
+            }
+            timeText.transform.DOScale(transform.localScale * 1.1f,0.2f).SetLoops(2,LoopType.Yoyo);
         }
     }
 }

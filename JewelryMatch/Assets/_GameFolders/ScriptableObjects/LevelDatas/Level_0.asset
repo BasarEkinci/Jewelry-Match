@@ -12,21 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8aac296cd5486e9989099e3ca9f3e3, type: 3}
   m_Name: Level_0
   m_EditorClassIdentifier: 
-  levelTime: 300
+  levelTime: 100
   powerUps:
   - powerUp: {fileID: 7298504932386466322, guid: f1ab7a5e5ad243b4d8ca9825b227e792, type: 3}
-    spawnCount: 2
+    spawnCount: 1
   otherJewelriesToSpawn:
   - targetJewelry: {fileID: 2239272407115490992, guid: b18016be2512faa4091b53dc66c6f162, type: 3}
-    requiredMatchCount: 2
+    requiredMatchCount: 1
   - targetJewelry: {fileID: 1422962430380926167, guid: e4920677ff7d6bf49b0874912463b6f0, type: 3}
-    requiredMatchCount: 2
+    requiredMatchCount: 1
   - targetJewelry: {fileID: 6735487707725616790, guid: d05fce6190ec19d4ca078f3d35d065a7, type: 3}
-    requiredMatchCount: 2
+    requiredMatchCount: 1
   targetData:
   - targetJewelry: {fileID: 2299332578982629468, guid: cd2de8365ebe300478aabe2346487d0b, type: 3}
-    requiredMatchCount: 2
+    requiredMatchCount: 1
   - targetJewelry: {fileID: 8682346854427746572, guid: e8a27d80d308e9b4aa7b1b75fba56b6f, type: 3}
-    requiredMatchCount: 2
+    requiredMatchCount: 1
   - targetJewelry: {fileID: 5454561451847745826, guid: 79212c5601b400b4d9ab9ba3e5b87208, type: 3}
-    requiredMatchCount: 2
+    requiredMatchCount: 1

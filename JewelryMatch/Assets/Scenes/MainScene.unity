@@ -1303,13 +1303,14 @@ GameObject:
   - component: {fileID: 655456413}
   - component: {fileID: 655456415}
   - component: {fileID: 655456414}
+  - component: {fileID: 655456416}
   m_Layer: 5
   m_Name: WinPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &655456413
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1368,6 +1369,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 655456412}
   m_CullTransparentMesh: 1
+--- !u!114 &655456416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655456412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117aebb67ea4444283b1924423691b61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winStars:
+  - {fileID: 1793113551}
+  - {fileID: 1690593584}
+  - {fileID: 931151189}
+  continueButton: {fileID: 289878859}
 --- !u!1 &771431757
 GameObject:
   m_ObjectHideFlags: 0
@@ -1865,7 +1883,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: -44.999878}
+  m_AnchoredPosition: {x: 0, y: -45.00055}
   m_SizeDelta: {x: 0, y: 330.533}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &916327403
@@ -1951,7 +1969,7 @@ GameObject:
   - component: {fileID: 931151190}
   - component: {fileID: 931151189}
   m_Layer: 5
-  m_Name: WinImage_2
+  m_Name: Star_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4927,7 +4945,7 @@ GameObject:
   - component: {fileID: 1690593585}
   - component: {fileID: 1690593584}
   m_Layer: 5
-  m_Name: WinImage_1
+  m_Name: Star_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5290,7 +5308,7 @@ GameObject:
   - component: {fileID: 1793113552}
   - component: {fileID: 1793113551}
   m_Layer: 5
-  m_Name: WinImage
+  m_Name: Star_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6687,6 +6705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87eb7bdaf5a649b9a20785eeb4f94006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playButton: {fileID: 1287119929}
   gameplayObject: {fileID: 929384858}
   levels:
   - {fileID: 11400000, guid: 56744e27068b27a40930e4cd8a1bb835, type: 2}

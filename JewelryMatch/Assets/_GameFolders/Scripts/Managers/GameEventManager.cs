@@ -10,7 +10,12 @@ namespace _GameFolders.Scripts.Managers
         public static event Action<GameState> OnGameStateChanged;
         public static event Action OnTargetReached;
         public static event Action<float> OnHourglassCollected;
+        public static event Action<int> OnLevelCompleted; // int parameter represents the earned star count
         
+        public static void InvokeLevelCompleted(int earnedStar)
+        {
+            OnLevelCompleted?.Invoke(earnedStar);
+        }
         public static void InvokeHourglassCollected(float additionalTime)
         {
             OnHourglassCollected?.Invoke(additionalTime);

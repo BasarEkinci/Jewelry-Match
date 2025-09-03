@@ -33,7 +33,6 @@ namespace _GameFolders.Scripts.Objects
             }
             if (_currentAmount == 0)
             {
-                GameEventManager.InvokeTargetReached();
                 transform.DOScale(Vector3.zero,0.2f).SetEase(Ease.OutBack).OnComplete(()=> Destroy(gameObject));                
             }
         }

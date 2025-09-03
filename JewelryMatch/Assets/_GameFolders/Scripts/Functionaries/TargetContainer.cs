@@ -11,9 +11,10 @@ namespace _GameFolders.Scripts.Functionaries
     {
         [SerializeField] private GameObject targetUIContainer;
         [SerializeField] private TargetUI targetUi;
-        private GameState _gameState;
+        private bool _isLevelCompleted;
         private void OnEnable()
         {
+            _isLevelCompleted = false;
             LevelDataSO currentLevel = GameManager.Instance.CurrentLevel; 
             for (int i = 0; i < currentLevel.TargetData.Count; i++) 
             { 
@@ -33,9 +34,11 @@ namespace _GameFolders.Scripts.Functionaries
         }
         private void FixedUpdate()
         {
-            if (transform.childCount == 0)
+            if (transform.childCount == 0 && !_isLevelCompleted)
             {
+                _isLevelCompleted = true;
                 GameEventManager.InvokeGameStateChanged(GameState.GameWin);
+                GameEventManager.InvokeTargetReached();
                 Debug.Log("Level Completed!");
             }
         }
