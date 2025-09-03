@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using _GameFolders.Scripts.Abstracts;
 using _GameFolders.Scripts.Data.UnityObjects;
 using DG.Tweening;

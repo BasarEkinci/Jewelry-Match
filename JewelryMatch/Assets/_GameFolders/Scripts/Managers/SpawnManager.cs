@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using _GameFolders.Scripts.Abstracts;
 using _GameFolders.Scripts.Data.UnityObjects;
-using _GameFolders.Scripts.Data.ValueObjects;
 using _GameFolders.Scripts.Enums;
 using UnityEngine;
 
@@ -31,7 +31,7 @@ namespace _GameFolders.Scripts.Managers
             {
                 SpawnJewelry();
             }
-            else if (state is GameState.GameOver)
+            else if (state is GameState.GameOver or GameState.MainMenu)
             {
                 for (int i = jewelryHolder.transform.childCount - 1; i >= 0; i--)
                 {
@@ -44,32 +44,44 @@ namespace _GameFolders.Scripts.Managers
         {
             for (int i = 0; i < InitializeSpawnList().Count; i++)
             {
-                Instantiate(InitializeSpawnList()[i].targetJewelry, GenerateRandomPosition(), Quaternion.identity, jewelryHolder.transform);
+                Instantiate(InitializeSpawnList()[i], GenerateRandomPosition(), Quaternion.identity, jewelryHolder.transform);
             }            
         }
 
-        private List<JewelryToSpawnData> InitializeSpawnList()
+        private List<CollectableObject> InitializeSpawnList()
         {
-            List<JewelryToSpawnData> allJewelriesToSpawn = new List<JewelryToSpawnData>();
+            List<CollectableObject> allItemsToSpawn = new List<CollectableObject>();
             LevelDataSO currentLevel = GameManager.Instance.CurrentLevel;
             
             foreach (var target in currentLevel.TargetData)
             {
+                CollectableObject collectable = target.targetJewelry.GetComponent<CollectableObject>();
                 int count = target.requiredMatchCount * 3;
                 for (int i = 0; i < count; i++)
                 {
-                    allJewelriesToSpawn.Add(target);
+                    allItemsToSpawn.Add(collectable);
                 }
             }
             foreach (var other in currentLevel.OtherJewelriesToSpawn)
             {
+                CollectableObject collectable = other.targetJewelry.GetComponent<CollectableObject>();
                 int count = other.requiredMatchCount * 3;
                 for (int i = 0; i < count; i++)
                 {
-                    allJewelriesToSpawn.Add(other);
+                    allItemsToSpawn.Add(collectable);
                 }
             }
-            return allJewelriesToSpawn;
+
+            foreach (var powerUp in currentLevel.PowerUps)
+            {
+                CollectableObject collectable = powerUp.powerUp.GetComponent<CollectableObject>();
+                int count = powerUp.spawnCount;
+                for (int i = 0; i < count; i++)
+                {
+                    allItemsToSpawn.Add(collectable);
+                }
+            }
+            return allItemsToSpawn;
         }
         
         private Vector3 GenerateRandomPosition()

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using _GameFolders.Scripts.Abstracts;
 using _GameFolders.Scripts.Data.ValueObjects;
 using UnityEditor;
 using UnityEngine;
@@ -11,6 +12,9 @@ namespace _GameFolders.Scripts.Data.UnityObjects
     {
         [Header("Level Settings")]
         [SerializeField] private float levelTime = 60f;
+
+        [Header("PowerUp List")]
+        [SerializeField] private List<PowerUpToSpawnData> powerUps;
         
         [Header("Jewelry Data Lists")]
         [SerializeField] private List<JewelryToSpawnData> otherJewelriesToSpawn;
@@ -19,7 +23,7 @@ namespace _GameFolders.Scripts.Data.UnityObjects
         /*
          * Powerups will be added
          */
-        
+        public List<PowerUpToSpawnData> PowerUps => powerUps;
         public float LevelTime => levelTime;
         public List<JewelryToSpawnData> TargetData => targetData;
         public List<JewelryToSpawnData> OtherJewelriesToSpawn => otherJewelriesToSpawn;

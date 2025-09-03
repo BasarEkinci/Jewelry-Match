@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Level_0
   m_EditorClassIdentifier: 
   levelTime: 300
+  powerUps:
+  - powerUp: {fileID: 7298504932386466322, guid: f1ab7a5e5ad243b4d8ca9825b227e792, type: 3}
+    spawnCount: 2
   otherJewelriesToSpawn:
   - targetJewelry: {fileID: 2239272407115490992, guid: b18016be2512faa4091b53dc66c6f162, type: 3}
     requiredMatchCount: 2

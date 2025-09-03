@@ -1,7 +1,7 @@
-﻿using _GameFolders.Scripts.Enums;
+﻿using _GameFolders.Scripts.Abstracts;
+using _GameFolders.Scripts.Enums;
 using _GameFolders.Scripts.Managers;
 using _GameFolders.Scripts.Objects;
-using Sirenix.OdinValidator.Editor;
 using UnityEngine;
 
 namespace _GameFolders.Scripts.Functionaries
@@ -10,7 +10,8 @@ namespace _GameFolders.Scripts.Functionaries
     {
         [SerializeField] private SlotManager slotManager;
         [SerializeField] private LayerMask layerMask;
-        private Jewelry _currentJewelry; 
+        
+        private CollectableObject _currentCollectable; 
         private Camera _camera;
         private GameState _currentState;
 
@@ -38,29 +39,37 @@ namespace _GameFolders.Scripts.Functionaries
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit,Mathf.Infinity,layerMask))
                 {
-                    if (hit.collider.TryGetComponent<Jewelry>(out Jewelry collectable))
+                    if (hit.collider.TryGetComponent<CollectableObject>(out CollectableObject collectable))
                     {
-                        _currentJewelry = collectable;
+                        _currentCollectable = collectable;
                     }
                     else
                     {
-                        if (_currentJewelry != null)
+                        if (_currentCollectable != null)
                         {
-                            _currentJewelry.Drop(); 
-                            _currentJewelry = null;
+                            _currentCollectable.Drop(); 
+                            _currentCollectable = null;
                         }
                     }
                 }
             } 
-            if (_currentJewelry != null)
+            if (_currentCollectable != null)
             { 
-                _currentJewelry.Select();
+                _currentCollectable.Select();
                 if (Input.GetMouseButtonUp(0))
-                { 
-                    _currentJewelry.Collect();
-                    slotManager.AddJewelry(_currentJewelry);
-                    GameEventManager.InvokeCollectJewelry(_currentJewelry.JewelryData.JewelryID);
-                    _currentJewelry = null; 
+                {
+                    if (_currentCollectable is Jewelry)
+                    {
+                        Jewelry jewelry = _currentCollectable as Jewelry;
+                        _currentCollectable.Collect();
+                        slotManager.AddJewelry(jewelry);
+                        GameEventManager.InvokeCollectJewelry(jewelry.JewelryData.JewelryID);
+                    }
+                    else
+                    {
+                        _currentCollectable.Collect();
+                    }
+                    _currentCollectable = null; 
                 } 
             }
         }

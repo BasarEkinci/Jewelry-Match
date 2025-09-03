@@ -1,5 +1,6 @@
 ﻿using _GameFolders.Scripts.Enums;
 using _GameFolders.Scripts.Managers;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,19 +21,29 @@ namespace _GameFolders.Scripts.UI
         
         private float _remainingTime;
         private GameState _gameState;
-        private float _fillAmount;
         private float _levelTime => GameManager.Instance.CurrentLevel.LevelTime;
         private void OnEnable()
         {
-            GameEventManager.OnGameStateChanged += state => _gameState = state;
+            GameEventManager.OnGameStateChanged -= state => _gameState = state;
+            GameEventManager.OnHourglassCollected += OnHourglassCollected;
             levelText.SetText("Level {0}", GameManager.Instance.CurrentLevelIndex + 1);
             _remainingTime = GameManager.Instance.CurrentLevel.LevelTime;
-            _fillAmount = 1;
         }
-        
+
+        private void OnHourglassCollected(float amount)
+        {
+            _remainingTime += amount;
+            if (_remainingTime > _levelTime)
+            {
+                _remainingTime = _levelTime;
+            }
+            timeText.transform.DOScale(transform.localScale * 1.1f,0.2f).SetLoops(2,LoopType.Yoyo);
+        }
+
         private void OnDisable()
         {
             GameEventManager.OnGameStateChanged -= state => _gameState = state;
+            GameEventManager.OnHourglassCollected -= OnHourglassCollected;
         }
 
         private void Update()
@@ -62,17 +73,11 @@ namespace _GameFolders.Scripts.UI
             float value = _remainingTime;
 
             if (value > _remainingTime / 2)
-            {
                 levelTimeFillImage.color = fillImageInitialColor;
-            }
             else if (value < _remainingTime / 2)
-            {
                 levelTimeFillImage.color = fillImageMediumColor;    
-            }
             else if (value < _remainingTime / 4)
-            {
                 levelTimeFillImage.color = fillImageDangerColor;
-            }
         }
     }
 }

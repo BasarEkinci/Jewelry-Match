@@ -9,6 +9,12 @@ namespace _GameFolders.Scripts.Managers
         public static event Action OnSpawnCompleted;
         public static event Action<GameState> OnGameStateChanged;
         public static event Action OnTargetReached;
+        public static event Action<float> OnHourglassCollected;
+        
+        public static void InvokeHourglassCollected(float additionalTime)
+        {
+            OnHourglassCollected?.Invoke(additionalTime);
+        }
         
         public static void InvokeTargetReached()
         {
