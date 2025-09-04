@@ -1,12 +1,14 @@
-﻿using UnityEngine;
+﻿using _GameFolders.Scripts.Extensions;
+using UnityEngine;
 
 namespace _GameFolders.Scripts.Functionaries
 {
-    public class VibrationHelper
+    public abstract class VibrationHelper
     {
         public static void Vibrate(long milliseconds)
         {
-            if (!GameSettings.isVibrationOn)
+            bool isVibrationOn = GameDatabase.LoadData<bool>(Constants.IsVibrationOnKey);
+            if (!isVibrationOn)
             {
                 return;
             }

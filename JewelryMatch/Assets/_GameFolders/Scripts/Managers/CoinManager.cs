@@ -18,7 +18,8 @@ namespace _GameFolders.Scripts.Managers
         {
             GameEventManager.OnCoinCollected += OnCoinCollected;
             GameEventManager.OnGameStateChanged += OnGameStateChanged;
-            coinText.text = _currentCoin.ToString();
+            _currentCoin = GameDatabase.LoadData<int>(Constants.CurrentCoinKey);
+            coinText.text = _currentCoin.ToString(); 
         }
         
         private void OnDisable()
@@ -29,7 +30,7 @@ namespace _GameFolders.Scripts.Managers
 
         private void OnGameStateChanged(GameState state)
         {
-            if (state == GameState.MainMenu)
+            if (state == GameState.GameWin)
             {
                 AddCoin(GetCurrentEarnedCoin());
                 _earnedCoin = 0;
@@ -58,6 +59,7 @@ namespace _GameFolders.Scripts.Managers
         public void AddCoin(int amount)
         {
             _currentCoin += amount;
+            GameDatabase.SaveData(Constants.CurrentCoinKey, _currentCoin);
             coinText.text = _currentCoin.ToString();
         }
     }

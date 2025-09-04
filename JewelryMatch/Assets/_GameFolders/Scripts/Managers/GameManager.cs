@@ -9,6 +9,7 @@ namespace _GameFolders.Scripts.Managers
 {
     public class GameManager : MonoSingleton<GameManager>
     {
+        [SerializeField] private Button deleteAllDataButton;
         [SerializeField] private Button playButton;
         [SerializeField] private GameObject gameplayObject;
         [SerializeField] private List<LevelDataSO> levels;
@@ -16,24 +17,32 @@ namespace _GameFolders.Scripts.Managers
         public int CurrentLevelIndex => _currentLevelIndex;
         
         private GameState _currentState;
-        private int _currentLevelIndex = 0;
+        private int _currentLevelIndex;
 
         private void Start()
         {
             _currentState = GameState.MainMenu;
+            _currentLevelIndex = GameDatabase.LoadData<int>(Constants.CurrentLevelKey);
             GameEventManager.InvokeGameStateChanged(_currentState);
         }
 
         private void OnEnable()
         {
             GameEventManager.OnGameStateChanged += HandleGameStateChange;
+            deleteAllDataButton.onClick.AddListener(DeleteAllData);
         }
         
         private void OnDisable()
         {
             GameEventManager.OnGameStateChanged -= HandleGameStateChange;
+            deleteAllDataButton.onClick.RemoveAllListeners();
         }
-
+        
+        private void DeleteAllData()
+        {
+            GameDatabase.DeleteAll();
+        }
+        
         private void HandleGameStateChange(GameState state)
         {
             switch (state)
@@ -47,8 +56,13 @@ namespace _GameFolders.Scripts.Managers
                     if (!gameplayObject.activeSelf)
                         gameplayObject.SetActive(true);
                     break;
+                case GameState.GameOver:
+                    if (gameplayObject.activeSelf)
+                        gameplayObject.SetActive(false);
+                    break;
                 case GameState.GameWin:
                     _currentLevelIndex++;
+                    GameDatabase.SaveData(Constants.CurrentLevelKey, _currentLevelIndex);
                     break;
             }
         }

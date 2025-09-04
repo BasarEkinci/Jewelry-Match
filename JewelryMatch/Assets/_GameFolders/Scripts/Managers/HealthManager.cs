@@ -1,5 +1,7 @@
-﻿using _GameFolders.Scripts.Enums;
+﻿using System;
+using _GameFolders.Scripts.Enums;
 using _GameFolders.Scripts.Extensions;
+using _GameFolders.Scripts.Functionaries;
 using TMPro;
 using UnityEngine;
 
@@ -9,41 +11,52 @@ namespace _GameFolders.Scripts.Managers
     {
         [SerializeField] private TMP_Text healthText;
         [SerializeField] private TMP_Text healthTimeText;
+        public int HealthAmount => _heartTimer.Current;
         
-        public int HealthAmount => _healthAmount;
-        
-        private float _healthRegenerationTime = 1800; // 30 minutes
-        private int _healthAmount = 4;
-        private GameState _gameState;
+        private RegenTimer _heartTimer;
+        private int _currentHealth;
+        private const float RegenCooldown = 1800f; 
+        private const int MaxHealth = 5;
 
         private void OnEnable()
         {
             GameEventManager.OnGameStateChanged += HandleGameStateChange;
-            healthText.SetText("{0}", _healthAmount);
         }
         private void OnDisable()
         {
             GameEventManager.OnGameStateChanged -= HandleGameStateChange;
         }
+
+        private void Start()
+        {
+            if (!GameDatabase.HasKey(Constants.CurrentHealthAmountKey))
+                _currentHealth = GameDatabase.LoadData(Constants.CurrentHealthAmountKey, 5);
+            else
+                _currentHealth = GameDatabase.LoadData<int>(Constants.CurrentHealthAmountKey);
+            
+            string lastExit = GameDatabase.HasKey(Constants.LastExitTimeKey)
+                ? GameDatabase.LoadData<string>(Constants.LastExitTimeKey)
+                : "";
+
+            _heartTimer = new RegenTimer(_currentHealth,MaxHealth, RegenCooldown);
+            _heartTimer.Load(_currentHealth,lastExit);
+
+            UpdateUI();
+        }
+
         private void Update()
         {
-            if (_healthAmount == 5) return;
-            if (_healthAmount < 5)
+            if (_heartTimer.Tick())
+                UpdateUI();
+
+            if (_heartTimer.Current >= 5)
             {
-                _healthRegenerationTime -= Time.deltaTime;
-                int minutes = Mathf.FloorToInt(_healthRegenerationTime / 60f);
-                int seconds = Mathf.FloorToInt(_healthRegenerationTime % 60f);
-                healthTimeText.SetText("{0:00}:{1:00}", minutes, seconds);
-                if (_healthRegenerationTime <= 0)
-                {
-                    _healthAmount++;
-                    healthText.text = _healthAmount.ToString();
-                    _healthRegenerationTime = 900f;
-                }
+                healthTimeText.SetText("Full");
             }
             else
             {
-                healthTimeText.SetText("Full");
+                TimeSpan remain = _heartTimer.GetRemainingTime();
+                healthTimeText.SetText("{0:00}:{1:00}", remain.Minutes, remain.Seconds);
             }
         }
 
@@ -51,12 +64,23 @@ namespace _GameFolders.Scripts.Managers
         {
             if (state == GameState.GameOver)
             {
-                if (_healthAmount > 0)
-                {
-                    _healthAmount--;
-                    healthText.text = _healthAmount.ToString();
-                }
+                _heartTimer.UseOne();
+                UpdateUI();
             }
+        }
+
+        private void UpdateUI()
+        {
+            healthText.SetText(_heartTimer.Current.ToString());
+        }
+
+        private void OnApplicationQuit()
+        {
+            if (GameDatabase.HasKey(Constants.LastExitTimeKey))
+                GameDatabase.SaveData(Constants.LastExitTimeKey, DateTime.Now.ToString());
+
+            if (GameDatabase.HasKey(Constants.CurrentHealthAmountKey))
+                GameDatabase.SaveData(Constants.CurrentHealthAmountKey, _heartTimer.Current);
         }
     }
 }

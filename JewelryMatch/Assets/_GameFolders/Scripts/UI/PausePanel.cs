@@ -1,6 +1,9 @@
-﻿using _GameFolders.Scripts.Enums;
+﻿using System;
+using _GameFolders.Scripts.Enums;
+using _GameFolders.Scripts.Extensions;
 using _GameFolders.Scripts.Functionaries;
 using _GameFolders.Scripts.Managers;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,10 +23,17 @@ namespace _GameFolders.Scripts.UI
         [SerializeField] private Button vibrationButton;
         [SerializeField] private Button vfxButton;
 
-        private bool _isMusicOn = true;
-        private bool _isVibrationOn = true;
-        private bool _isVfxOn = true;
-            
+        private bool _isMusicOn;
+        private bool _isVibrationOn;
+        private bool _isVfxOn;
+
+        private void Start()
+        {
+            _isMusicOn = GameDatabase.LoadData<bool>(Constants.IsMusicOnKey);
+            _isVibrationOn = GameDatabase.LoadData<bool>(Constants.IsVibrationOnKey);
+            _isVfxOn = GameDatabase.LoadData<bool>(Constants.IsSfxOnKey);
+        }
+
         private void OnEnable()
         {
             musicCloseImage.SetActive(!_isMusicOn);
@@ -52,25 +62,26 @@ namespace _GameFolders.Scripts.UI
         private void HandleResumeButton()
         {
             GameEventManager.InvokeGamePaused(false);
-            Debug.Log("Resume Button Clicked");
             VibrationHelper.Vibrate(100);
         }
         private void HandleMusicButton()
         {
             _isMusicOn = !_isMusicOn;
+            GameDatabase.SaveData(Constants.IsMusicOnKey, _isMusicOn);
             musicCloseImage.SetActive(!_isMusicOn);
             VibrationHelper.Vibrate(100);
         }
         private void HandleVibrationButton()
         {
             _isVibrationOn = !_isVibrationOn;
+            GameDatabase.SaveData(Constants.IsVibrationOnKey, _isVibrationOn);
             vibrationCloseImage.SetActive(!_isVibrationOn);
-            GameSettings.isVibrationOn = _isVibrationOn;
             VibrationHelper.Vibrate(100);
         }
         private void HandleSfxButton()
         {
             _isVfxOn = !_isVfxOn;
+            GameDatabase.SaveData(Constants.IsSfxOnKey, _isVfxOn);
             sfxCloseImage.SetActive(!_isVfxOn);
             VibrationHelper.Vibrate(100);
         }
