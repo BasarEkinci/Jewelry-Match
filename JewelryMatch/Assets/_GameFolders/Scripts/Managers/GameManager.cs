@@ -39,7 +39,7 @@ namespace _GameFolders.Scripts.Managers
             switch (state)
             {
                 case GameState.MainMenu:
-                    playButton.interactable = _currentLevelIndex <= levels.Count - 1;
+                    playButton.interactable = _currentLevelIndex < levels.Count;
                     if (gameplayObject.activeSelf)
                         gameplayObject.SetActive(false);
                     break;
@@ -48,7 +48,7 @@ namespace _GameFolders.Scripts.Managers
                         gameplayObject.SetActive(true);
                     break;
                 case GameState.GameWin:
-                    //_currentLevelIndex++;
+                    _currentLevelIndex++;
                     break;
             }
         }

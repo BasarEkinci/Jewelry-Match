@@ -1,4 +1,4 @@
-﻿using _GameFolders.Scripts.Enums;
+﻿using System;
 using _GameFolders.Scripts.Managers;
 using DG.Tweening;
 using TMPro;
@@ -9,6 +9,7 @@ namespace _GameFolders.Scripts.UI
 {
     public class GamePanel : MonoBehaviour
     {
+        #region Serialized Variables
         [Header("Settings")]
         [SerializeField] private Color fillImageInitialColor;
         [SerializeField] private Color fillImageMediumColor;
@@ -18,29 +19,29 @@ namespace _GameFolders.Scripts.UI
         [SerializeField] private TMP_Text levelText;
         [SerializeField] private TMP_Text timeText;
         [SerializeField] private Image levelTimeFillImage;
-        
+        #endregion
+        #region Private Variables
         private float _remainingTime;
+        private float _levelTime;
         private int _earnedStart;
-        private GameState _gameState;
-        private float _levelTime => GameManager.Instance.CurrentLevel.LevelTime;
+        private bool _isLevelCompleted;
+        #endregion
+        #region  Unity Methods
+
         private void OnEnable()
         {
-            GameEventManager.OnGameStateChanged -= state => _gameState = state;
+            InitializePanelValues();
             GameEventManager.OnHourglassCollected += OnHourglassCollected;
-            GameEventManager.OnTargetReached += () => GameEventManager.InvokeLevelCompleted(_earnedStart);
-            levelText.SetText("Level {0}", GameManager.Instance.CurrentLevelIndex + 1);
-            _remainingTime = GameManager.Instance.CurrentLevel.LevelTime;
+            GameEventManager.OnTargetReached += OnTargetReached;
         }
-        
         private void OnDisable()
         {
-            GameEventManager.OnGameStateChanged -= state => _gameState = state;
             GameEventManager.OnHourglassCollected -= OnHourglassCollected;
-            GameEventManager.OnTargetReached -= () => GameEventManager.InvokeLevelCompleted(_earnedStart);
+            GameEventManager.OnTargetReached -= OnTargetReached;
         }
         private void Update()
         {
-            if (_gameState != GameState.GameStart)
+            if (_isLevelCompleted)
             {
                 return;   
             }
@@ -59,25 +60,42 @@ namespace _GameFolders.Scripts.UI
             }
             SetFillImageColor();
         }
+        #endregion
+        #region Helper Methods
 
+        private void InitializePanelValues()
+        {
+            _isLevelCompleted = false;
+            _levelTime = GameManager.Instance.CurrentLevel.LevelTime;
+            levelText.SetText("Level {0}", GameManager.Instance.CurrentLevelIndex + 1);
+            _remainingTime = GameManager.Instance.CurrentLevel.LevelTime;
+        }
         private void SetFillImageColor()
         {
             float value = _remainingTime;
-            if (value > _remainingTime / 2)
+            if (value > _levelTime / 2)
             {
                 levelTimeFillImage.color = fillImageInitialColor;
                 _earnedStart = 3;
             }
-            else if (value < _remainingTime / 2)
+            else if (value < _levelTime /2)
             {
                 levelTimeFillImage.color = fillImageMediumColor;
                 _earnedStart = 2;
             }
-            else if (value < _remainingTime / 4)
+            else if (value < _levelTime / 4)
             {
                 levelTimeFillImage.color = fillImageDangerColor;
                 _earnedStart = 1;
             }
+        }
+
+        #endregion
+        #region Event Handlers
+        private void OnTargetReached()
+        {
+            GameEventManager.InvokeLevelCompleted(_earnedStart);
+            _isLevelCompleted = true;
         }
         private void OnHourglassCollected(float amount)
         {
@@ -88,5 +106,6 @@ namespace _GameFolders.Scripts.UI
             }
             timeText.transform.DOScale(transform.localScale * 1.1f,0.2f).SetLoops(2,LoopType.Yoyo);
         }
+        #endregion
     }
 }

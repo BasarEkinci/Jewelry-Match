@@ -39,7 +39,6 @@ namespace _GameFolders.Scripts.Functionaries
                 _isLevelCompleted = true;
                 GameEventManager.InvokeGameStateChanged(GameState.GameWin);
                 GameEventManager.InvokeTargetReached();
-                Debug.Log("Level Completed!");
             }
         }
     }
