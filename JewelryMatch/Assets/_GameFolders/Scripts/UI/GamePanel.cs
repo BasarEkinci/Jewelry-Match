@@ -1,5 +1,6 @@
 ﻿using System;
 using _GameFolders.Scripts.Enums;
+using _GameFolders.Scripts.Functionaries;
 using _GameFolders.Scripts.Managers;
 using DG.Tweening;
 using TMPro;
@@ -33,7 +34,7 @@ namespace _GameFolders.Scripts.UI
 
         private void OnEnable()
         {
-            pauseButton.onClick.AddListener(()=> GameEventManager.InvokeGamePaused(true));
+            pauseButton.onClick.AddListener(HandlePauseButton);
             InitializePanelValues();
             GameEventManager.OnHourglassCollected += OnHourglassCollected;
             GameEventManager.OnTargetReached += OnTargetReached;
@@ -95,7 +96,13 @@ namespace _GameFolders.Scripts.UI
                 _earnedStart = 1;
             }
         }
-
+        
+        private void HandlePauseButton()
+        {
+            GameEventManager.InvokeGamePaused(true);
+            VibrationHelper.Vibrate(100);
+        }
+        
         #endregion
         #region Event Handlers
         private void OnTargetReached()

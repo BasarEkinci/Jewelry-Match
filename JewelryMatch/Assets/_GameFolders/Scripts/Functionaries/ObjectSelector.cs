@@ -93,7 +93,7 @@ namespace _GameFolders.Scripts.Functionaries
             {
                 _currentCollectable.Collect();
             }
-
+            VibrationHelper.Vibrate(100);
             _currentCollectable = null;
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using _GameFolders.Scripts.Enums;
+using _GameFolders.Scripts.Functionaries;
 using _GameFolders.Scripts.Objects;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
@@ -94,6 +95,7 @@ namespace _GameFolders.Scripts.Managers
                     _collectedJewelry.Remove(jewelry);
                     jewelry.OnMatch();
                 }
+                VibrationHelper.Vibrate(100);
             }
             catch (Exception e)
             {
