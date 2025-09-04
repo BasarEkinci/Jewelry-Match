@@ -42,7 +42,7 @@ namespace _GameFolders.Scripts.UI
         }
         private void HandleLevelCompleted(int earnedStars)
         {
-            HandleWinPanelAnimations(earnedStars,5).Forget();
+            HandleWinPanelAnimations(earnedStars,CoinManager.Instance.EarnedCoin).Forget();
         }
         private async UniTaskVoid HandleWinPanelAnimations(int earnedStars,int earnedCoins)
         {

@@ -12,7 +12,12 @@ namespace _GameFolders.Scripts.Managers
         public static event Action<float> OnHourglassCollected;
         public static event Action<int> OnLevelCompleted; // int parameter represents the earned star count
         public static event Action<bool> OnGamePaused;
+        public static event Action OnCoinCollected;
         
+        public static void InvokeCoinCollected()
+        {
+            OnCoinCollected?.Invoke();
+        }
         
         public static void InvokeGamePaused(bool isPaused)
         {

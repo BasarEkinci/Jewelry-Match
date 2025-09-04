@@ -1,4 +1,5 @@
-﻿using _GameFolders.Scripts.Extensions;
+﻿using _GameFolders.Scripts.Enums;
+using _GameFolders.Scripts.Extensions;
 using TMPro;
 using UnityEngine;
 
@@ -7,19 +8,44 @@ namespace _GameFolders.Scripts.Managers
     public class CoinManager : MonoSingleton<CoinManager>
     {
         [SerializeField] private TMP_Text coinText;
-        public int EarnedCoin => _earnedCoin;
-        
+        public int EarnedCoin => 5 + _earnedCoin; // Base 5 coin + collected coins in the level
         private int _currentCoin;
         private int _earnedCoin;
         
         // Earned coin event will be added later
-         
         
         private void OnEnable()
         {
-            coinText.SetText("{0}", _currentCoin);
+            GameEventManager.OnCoinCollected += OnCoinCollected;
+            GameEventManager.OnGameStateChanged += OnGameStateChanged;
+            coinText.text = _currentCoin.ToString();
+        }
+        
+        private void OnDisable()
+        {
+            GameEventManager.OnCoinCollected -= OnCoinCollected;
+            GameEventManager.OnGameStateChanged -= OnGameStateChanged;
         }
 
+        private void OnGameStateChanged(GameState state)
+        {
+            if (state == GameState.MainMenu)
+            {
+                AddCoin(GetCurrentEarnedCoin());
+                _earnedCoin = 0;
+            }
+        }
+
+        private void OnCoinCollected()
+        {
+            _earnedCoin++;
+        }
+
+        private int GetCurrentEarnedCoin()
+        {
+            return 5 + _earnedCoin;
+        }
+        
         public void SpendCoin(int amount)
         {
             if (_currentCoin > amount)
