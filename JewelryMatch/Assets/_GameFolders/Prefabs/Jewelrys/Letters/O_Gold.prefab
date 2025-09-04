@@ -68,6 +68,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: d1a40e26a89a03c4ebd37f09d392ecf5, type: 2}
+  - {fileID: 2100000, guid: ad751059d3f2ceb48943d0cad34cdc4f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -102,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jewelryData: {fileID: 11400000, guid: a4b1d3e3d13ca9942aa86b389b4b425b, type: 2}
-  selectedYPosition: 1
+  selectedYPosition: 1.5
   collectedScale: 0.6
   scaleDurationAfterCollect: 0.1
 --- !u!54 &-6224963339696964957

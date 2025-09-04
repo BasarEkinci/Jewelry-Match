@@ -8,6 +8,7 @@ namespace _GameFolders.Scripts.Managers
         [Header("Parent Panels")]
         [SerializeField] private GameObject gamePanel;
         [SerializeField] private GameObject mainMenuPanel;
+        [SerializeField] private GameObject pausePanel;
 
         [Header("Child Panels")]
         [SerializeField] private GameObject winPanel;
@@ -21,11 +22,13 @@ namespace _GameFolders.Scripts.Managers
         private void OnEnable()
         {
             GameEventManager.OnGameStateChanged += HandlePanelChange;
+            GameEventManager.OnGamePaused += isPaused => pausePanel.SetActive(isPaused);
         }
 
         private void OnDisable()
         {
             GameEventManager.OnGameStateChanged -= HandlePanelChange;
+            GameEventManager.OnGamePaused -= isPaused => pausePanel.SetActive(isPaused);
         }
 
         private void HandlePanelChange(GameState state)
@@ -38,6 +41,7 @@ namespace _GameFolders.Scripts.Managers
                     winPanel.SetActive(false);
                     slotsFullPanel.SetActive(false);
                     mainMenuPanel.SetActive(true);
+                    pausePanel.SetActive(false);
                     break;
                 case GameState.GameStart:
                     mainMenuPanel.SetActive(false);

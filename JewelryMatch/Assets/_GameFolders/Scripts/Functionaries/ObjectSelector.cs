@@ -10,10 +10,11 @@ namespace _GameFolders.Scripts.Functionaries
     {
         [SerializeField] private SlotManager slotManager;
         [SerializeField] private LayerMask layerMask;
-        
-        private CollectableObject _currentCollectable; 
+
+        private CollectableObject _currentCollectable;
         private Camera _camera;
         private GameState _currentState;
+        private bool _isPaused;
 
         private void Awake()
         {
@@ -23,55 +24,85 @@ namespace _GameFolders.Scripts.Functionaries
         private void OnEnable()
         {
             GameEventManager.OnGameStateChanged += state => _currentState = state;
+            GameEventManager.OnGamePaused += isPaused => _isPaused = isPaused;
         }
-        
+
         private void OnDisable()
         {
             GameEventManager.OnGameStateChanged -= state => _currentState = state;
+            GameEventManager.OnGamePaused -= isPaused => _isPaused = isPaused;
         }
 
         private void Update()
         {
-            if (_currentState != GameState.GameStart) return;
-            if (Input.GetMouseButton(0))
+            if (_currentState != GameState.GameStart || _isPaused)
+                return;
+            
+            if (Input.GetMouseButton(0)) 
+                HandleHold();
+            
+            if (_currentCollectable != null)
             {
-                Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit,Mathf.Infinity,layerMask))
+                _currentCollectable.Select();
+                
+                if (Input.GetMouseButtonUp(0)) 
+                    HandleRelease();
+            }
+        }
+
+        private void HandleHold()
+        {
+            var ray = _camera.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out var hit, Mathf.Infinity, layerMask))
+            {
+                if (hit.collider.TryGetComponent(out CollectableObject collectable))
                 {
-                    if (hit.collider.TryGetComponent<CollectableObject>(out CollectableObject collectable))
+                    if (_currentCollectable == null)
                     {
                         _currentCollectable = collectable;
                     }
-                    else
+                    else if (_currentCollectable != collectable)
                     {
-                        if (_currentCollectable != null)
-                        {
-                            _currentCollectable.Drop(); 
-                            _currentCollectable = null;
-                        }
+                        DropCurrent();
+                        _currentCollectable = collectable;
                     }
                 }
-            } 
-            if (_currentCollectable != null)
-            { 
-                _currentCollectable.Select();
-                if (Input.GetMouseButtonUp(0))
+                else
                 {
-                    if (_currentCollectable is Jewelry)
-                    {
-                        Jewelry jewelry = _currentCollectable as Jewelry;
-                        _currentCollectable.Collect();
-                        slotManager.AddJewelry(jewelry);
-                        GameEventManager.InvokeCollectJewelry(jewelry.JewelryData.JewelryID);
-                    }
-                    else
-                    {
-                        _currentCollectable.Collect();
-                    }
-                    _currentCollectable = null; 
-                } 
+                    DropCurrent();
+                }
             }
+            else
+            {
+                DropCurrent();
+            }
+        }
+
+        private void HandleRelease()
+        {
+            if (_currentCollectable == null) return;
+
+            if (_currentCollectable is Jewelry jewelry)
+            {
+                _currentCollectable.Collect();
+                slotManager.AddJewelry(jewelry);
+                GameEventManager.InvokeCollectJewelry(jewelry.JewelryData.JewelryID);
+            }
+            else
+            {
+                _currentCollectable.Collect();
+            }
+
+            _currentCollectable = null;
+        }
+
+        private void DropCurrent()
+        {
+            if (_currentCollectable == null) return;
+
+            _currentCollectable.Drop();
+            _currentCollectable = null;
         }
     }
 }

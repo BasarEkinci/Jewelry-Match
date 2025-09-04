@@ -14,12 +14,16 @@ namespace _GameFolders.Scripts.Objects
         [SerializeField] private float scaleDuration = 0.5f;
         [SerializeField] private float selectedYPosition = 1f;
         
+        private static readonly int OutlineMultiplier = Shader.PropertyToID("_OutlineMultiplier");
+        
         private Sequence _sequence;
         private Rigidbody _rigidbody;
-
+        private Material _outlineMaterial;
+        
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
+            _outlineMaterial = GetComponent<MeshRenderer>().materials[1];
         }
 
         private void OnEnable()
@@ -44,14 +48,16 @@ namespace _GameFolders.Scripts.Objects
 
         public override void Drop()
         {
-            _rigidbody.useGravity = true;
             _rigidbody.isKinematic = false;
+            _rigidbody.useGravity = true;
+            _outlineMaterial.SetFloat(OutlineMultiplier, 0f);
         }
 
         public override void Select()
         {
             _rigidbody.useGravity = false;
             _rigidbody.isKinematic = true;
+            _outlineMaterial.SetFloat(OutlineMultiplier, 1f);
             transform.DOLocalMoveY(selectedYPosition, 0.2f);
         }
     }

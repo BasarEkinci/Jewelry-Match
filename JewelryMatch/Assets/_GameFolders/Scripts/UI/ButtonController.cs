@@ -11,6 +11,7 @@ namespace _GameFolders.Scripts.UI
             if (HealthManager.Instance.HealthAmount == 0)
                 return;
             GameEventManager.InvokeGameStateChanged(GameState.GameStart);
+            GameEventManager.InvokeGamePaused(false);
         }
         public void ContinueButton()
         {

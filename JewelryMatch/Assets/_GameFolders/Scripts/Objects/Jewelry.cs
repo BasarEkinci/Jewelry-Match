@@ -17,17 +17,21 @@ namespace _GameFolders.Scripts.Objects
         [SerializeField] private float scaleDurationAfterCollect = 0.1f;
         
         public JewelryDataSO JewelryData => jewelryData;
+        
+        private static readonly int OutlineMultiplier = Shader.PropertyToID("_OutlineMultiplier");
 
         private Tween _hoverTween;
         private Rigidbody _rb;
-        private Collider _coll; //Some jewelry has multiple colliders
+        private Collider _coll; 
         private MeshRenderer _mesh;
+        private Material _outlineMaterial;
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody>();
             _coll = GetComponent<Collider>();
             _mesh = GetComponentInChildren<MeshRenderer>();
+            _outlineMaterial = _mesh.materials[1];
         }
 
         private void OnDestroy()
@@ -46,6 +50,7 @@ namespace _GameFolders.Scripts.Objects
             _rb.isKinematic = true;
             _coll.enabled = false;
             _mesh.shadowCastingMode = ShadowCastingMode.Off;
+            _outlineMaterial.SetFloat(OutlineMultiplier, 0f);
         }
 
         public void OnMatch()
@@ -57,14 +62,16 @@ namespace _GameFolders.Scripts.Objects
         
         public override void Drop()
         {
-            _rb.useGravity = true;
             _rb.isKinematic = false;
+            _rb.useGravity = true;
+            _outlineMaterial.SetFloat(OutlineMultiplier, 0f);
         }
 
         public override void Select()
         {
             _rb.useGravity = false;
             _rb.isKinematic = true;
+            _outlineMaterial.SetFloat(OutlineMultiplier, 1f);
             transform.DOLocalMoveY(selectedYPosition, 0.2f);
         }
     }

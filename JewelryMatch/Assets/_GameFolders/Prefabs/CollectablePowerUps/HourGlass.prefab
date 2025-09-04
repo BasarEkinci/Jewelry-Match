@@ -68,6 +68,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: fa41438a03677cf4dad1423a290ee15f, type: 2}
+  - {fileID: 2100000, guid: ad751059d3f2ceb48943d0cad34cdc4f, type: 2}
   - {fileID: 2100000, guid: 19541fb57f3c20b46bd894b98ee803d1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -156,4 +157,4 @@ MonoBehaviour:
   riseDuration: 0.5
   rotateDuration: 0.1
   scaleDuration: 0.5
-  selectedYPosition: 1
+  selectedYPosition: 2

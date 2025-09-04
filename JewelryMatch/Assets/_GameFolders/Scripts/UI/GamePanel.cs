@@ -1,4 +1,5 @@
 ﻿using System;
+using _GameFolders.Scripts.Enums;
 using _GameFolders.Scripts.Managers;
 using DG.Tweening;
 using TMPro;
@@ -18,6 +19,7 @@ namespace _GameFolders.Scripts.UI
         [Header("References")]
         [SerializeField] private TMP_Text levelText;
         [SerializeField] private TMP_Text timeText;
+        [SerializeField] private Button pauseButton;
         [SerializeField] private Image levelTimeFillImage;
         #endregion
         #region Private Variables
@@ -25,23 +27,28 @@ namespace _GameFolders.Scripts.UI
         private float _levelTime;
         private int _earnedStart;
         private bool _isLevelCompleted;
+        private bool _isGamePaused;
         #endregion
         #region  Unity Methods
 
         private void OnEnable()
         {
+            pauseButton.onClick.AddListener(()=> GameEventManager.InvokeGamePaused(true));
             InitializePanelValues();
             GameEventManager.OnHourglassCollected += OnHourglassCollected;
             GameEventManager.OnTargetReached += OnTargetReached;
+            GameEventManager.OnGamePaused += isPaused => _isGamePaused = isPaused;
         }
         private void OnDisable()
         {
+            pauseButton.onClick.RemoveAllListeners();
             GameEventManager.OnHourglassCollected -= OnHourglassCollected;
             GameEventManager.OnTargetReached -= OnTargetReached;
+            GameEventManager.OnGamePaused -= isPaused => _isGamePaused = isPaused;
         }
         private void Update()
         {
-            if (_isLevelCompleted)
+            if (_isLevelCompleted || _isGamePaused)
             {
                 return;   
             }
@@ -58,7 +65,7 @@ namespace _GameFolders.Scripts.UI
                 timeText.SetText("00:00");
                 levelTimeFillImage.fillAmount = 0f;
             }
-            SetFillImageColor();
+            SetFillImageColor(_remainingTime);
         }
         #endregion
         #region Helper Methods
@@ -70,15 +77,14 @@ namespace _GameFolders.Scripts.UI
             levelText.SetText("Level {0}", GameManager.Instance.CurrentLevelIndex + 1);
             _remainingTime = GameManager.Instance.CurrentLevel.LevelTime;
         }
-        private void SetFillImageColor()
+        private void SetFillImageColor(float value)
         {
-            float value = _remainingTime;
             if (value > _levelTime / 2)
             {
                 levelTimeFillImage.color = fillImageInitialColor;
                 _earnedStart = 3;
             }
-            else if (value < _levelTime /2)
+            else if (value < _levelTime / 2 && value > _levelTime / 4)
             {
                 levelTimeFillImage.color = fillImageMediumColor;
                 _earnedStart = 2;
