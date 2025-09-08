@@ -29,8 +29,8 @@ namespace _GameFolders.Scripts.UI
         {
             _screenWidth = screenParent.parent.GetComponent<RectTransform>().rect.width;
             _selectedImageOffset = _screenWidth / 3f;
-            //shopPanel.anchoredPosition = new Vector2(-_screenWidth,0f);
-            //collectionPanel.anchoredPosition = new Vector2(_screenWidth,0f);
+            shopPanel.anchoredPosition = new Vector2(-_screenWidth,0f);
+            collectionPanel.anchoredPosition = new Vector2(_screenWidth,0f);
         }
 
         public void SetScreenPos(int screenWidthOffsetMultiplier)
