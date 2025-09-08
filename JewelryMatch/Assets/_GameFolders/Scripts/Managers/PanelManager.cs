@@ -7,7 +7,7 @@ namespace _GameFolders.Scripts.Managers
     {
         [Header("Parent Panels")]
         [SerializeField] private GameObject gamePanel;
-        [SerializeField] private GameObject mainMenuPanel;
+        [SerializeField] private GameObject mainMenuPanels;
         [SerializeField] private GameObject pausePanel;
 
         [Header("Child Panels")]
@@ -40,11 +40,11 @@ namespace _GameFolders.Scripts.Managers
                     gamePanel.SetActive(false);
                     winPanel.SetActive(false);
                     slotsFullPanel.SetActive(false);
-                    mainMenuPanel.SetActive(true);
+                    mainMenuPanels.SetActive(true);
                     pausePanel.SetActive(false);
                     break;
                 case GameState.GameStart:
-                    mainMenuPanel.SetActive(false);
+                    mainMenuPanels.SetActive(false);
                     gamePanel.SetActive(true);
                     break;
                 case GameState.GameWin:
@@ -58,7 +58,7 @@ namespace _GameFolders.Scripts.Managers
 
         private void SetInitialPanelState()
         {
-            mainMenuPanel.SetActive(true);
+            mainMenuPanels.SetActive(true);
             gamePanel.SetActive(false);
             winPanel.SetActive(false);
             slotsFullPanel.SetActive(false);
