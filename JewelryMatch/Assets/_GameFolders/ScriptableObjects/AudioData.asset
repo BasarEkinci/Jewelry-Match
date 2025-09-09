@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da6e12bbc2264ae2a55048cdca6d2bc2, type: 3}
+  m_Name: AudioData
+  m_EditorClassIdentifier: 
+  gameMusic: {fileID: 0}
+  buttonClickSfx: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
+  winSfx: {fileID: 8300000, guid: a26cded4aabadd54c87a4cf88581c32e, type: 3}
+  slotsFullSfx: {fileID: 8300000, guid: 360fc8fcd162ef34eb903a642bbb4cee, type: 3}
+  timeOutSfx: {fileID: 8300000, guid: c5e5eef091d4bde4483f542dd132c5e2, type: 3}
+  collectItemSfx: {fileID: 8300000, guid: 9a4a293c43734ec4397cc8c54d5b65e4, type: 3}
+  selectItemSfx: {fileID: 8300000, guid: 9a4a293c43734ec4397cc8c54d5b65e4, type: 3}
+  matchSoundSfx: {fileID: 8300000, guid: d20ccb3ab92974c458ab4302d99b7d08, type: 3}

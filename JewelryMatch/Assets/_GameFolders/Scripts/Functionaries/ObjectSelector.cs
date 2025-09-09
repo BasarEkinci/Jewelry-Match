@@ -67,6 +67,7 @@ namespace _GameFolders.Scripts.Functionaries
                         DropCurrent();
                         _currentCollectable = collectable;
                     }
+                    AudioManager.Instance.PlaySfx(AudioManager.Instance.AudioData.CollectItemSfx);
                 }
                 else
                 {
@@ -93,6 +94,7 @@ namespace _GameFolders.Scripts.Functionaries
             {
                 _currentCollectable.Collect();
             }
+            AudioManager.Instance.PlaySfx(AudioManager.Instance.AudioData.CollectItemSfx);
             VibrationHelper.Vibrate(100);
             _currentCollectable = null;
         }

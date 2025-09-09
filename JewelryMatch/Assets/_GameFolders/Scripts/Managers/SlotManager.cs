@@ -95,6 +95,7 @@ namespace _GameFolders.Scripts.Managers
                     _collectedJewelry.Remove(jewelry);
                     jewelry.OnMatch();
                 }
+                AudioManager.Instance.PlaySfx(AudioManager.Instance.AudioData.MatchSoundSfx);
                 VibrationHelper.Vibrate(100);
             }
             catch (Exception e)
