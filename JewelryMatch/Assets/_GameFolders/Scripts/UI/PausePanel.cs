@@ -24,7 +24,7 @@ namespace _GameFolders.Scripts.UI
         }
         private void HandleMainMenuButton()
         {
-            GameEventManager.InvokeGameStateChanged(GameState.MainMenu);
+            GameEventManager.InvokeGameStateChanged(GameState.GameOver);
             VibrationHelper.Vibrate(100);
         }
         private void HandleResumeButton()
