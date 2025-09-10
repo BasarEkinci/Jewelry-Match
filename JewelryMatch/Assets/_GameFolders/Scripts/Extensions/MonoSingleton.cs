@@ -1,13 +1,14 @@
 ﻿using System;
 using UnityEngine;
+#pragma warning disable CS0618 // Type or member is obsolete
 
 namespace _GameFolders.Scripts.Extensions
 {
     public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {
-        public static T Instance => _instance.Value;
+        public static T Instance => instance.Value;
 
-        private static readonly Lazy<T> _instance = new Lazy<T>(() =>
+        private static readonly Lazy<T> instance = new Lazy<T>(() =>
         {
             var existingInstance = FindObjectOfType<T>();
             if (existingInstance != null)
@@ -19,7 +20,7 @@ namespace _GameFolders.Scripts.Extensions
 
         protected virtual void Awake()
         {
-            if (_instance.IsValueCreated && _instance.Value != this)
+            if (instance.IsValueCreated && instance.Value != this)
             {
                 Destroy(gameObject);
                 return;

@@ -1,4 +1,5 @@
-﻿using _GameFolders.Scripts.Functionaries;
+﻿using System;
+using _GameFolders.Scripts.Functionaries;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,9 +11,12 @@ namespace _GameFolders.Scripts.UI
 
         [SerializeField] private Toggle toggle;
         [SerializeField] private SettingType settingType;
-
+        [SerializeField] private GameObject closedLine;
+        
         private void OnEnable()
         {
+            closedLine.SetActive(!toggle.isOn);
+            toggle.onValueChanged.AddListener(OnToggleChanged);
             switch (settingType)
             {
                 case SettingType.Music:
@@ -25,13 +29,6 @@ namespace _GameFolders.Scripts.UI
                     toggle.isOn = SettingsButtonManager.Instance.IsVibrationOn;
                     break;
             }
-
-            toggle.onValueChanged.AddListener(OnToggleChanged);
-        }
-        
-        private void OnDisable()
-        {
-            toggle.onValueChanged.RemoveListener(OnToggleChanged);
         }
 
         private void OnToggleChanged(bool isOn)
@@ -48,7 +45,7 @@ namespace _GameFolders.Scripts.UI
                     SettingsButtonManager.Instance.SetVibration(isOn);
                     break;
             }
-
+            closedLine.SetActive(!isOn);
             if (settingType == SettingType.Vibration && isOn)
                 VibrationHelper.Vibrate(100);
         }

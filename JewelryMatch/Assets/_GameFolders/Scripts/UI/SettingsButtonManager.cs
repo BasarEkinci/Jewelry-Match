@@ -1,6 +1,4 @@
-using System;
 using _GameFolders.Scripts.Extensions;
-using UnityEngine;
 
 namespace _GameFolders.Scripts.UI
 {

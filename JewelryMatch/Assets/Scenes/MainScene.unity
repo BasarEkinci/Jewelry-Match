@@ -201,19 +201,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 16785367}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 921534377}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &16785367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -592,9 +580,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 921534377}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
+      - m_Target: {fileID: 1700540948}
+        m_TargetAssemblyTypeName: _GameFolders.Scripts.Managers.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySfx
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
@@ -810,6 +798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggle: {fileID: 104547075}
   settingType: 0
+  closedLine: {fileID: 207196791}
 --- !u!114 &104547075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -852,35 +841,11 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 104547072}
   toggleTransition: 1
-  graphic: {fileID: 207196793}
+  graphic: {fileID: 0}
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 921706450}
-        m_TargetAssemblyTypeName: _GameFolders.Scripts.UI.SettingsButton, Assembly-CSharp
-        m_MethodName: HandleMusicButton
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 921534377}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &113466588
 GameObject:
@@ -1187,6 +1152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggle: {fileID: 182314429}
   settingType: 1
+  closedLine: {fileID: 2087460333}
 --- !u!114 &182314429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1229,35 +1195,11 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 182314426}
   toggleTransition: 1
-  graphic: {fileID: 2087460335}
+  graphic: {fileID: 0}
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 921706450}
-        m_TargetAssemblyTypeName: _GameFolders.Scripts.UI.SettingsButton, Assembly-CSharp
-        m_MethodName: HandleSfxButton
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 921534377}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &207196791
 GameObject:
@@ -1460,18 +1402,6 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 921534377}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2844,6 +2774,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1700540948}
+        m_TargetAssemblyTypeName: _GameFolders.Scripts.Managers.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySfx
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &635985997
 GameObject:
   m_ObjectHideFlags: 0
@@ -3485,9 +3427,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 921534377}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
+      - m_Target: {fileID: 1700540948}
+        m_TargetAssemblyTypeName: _GameFolders.Scripts.Managers.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySfx
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
@@ -3741,12 +3683,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 765567199}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1372573311}
+  - {fileID: 1191314060}
   m_Father: {fileID: 1262837687}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5061,21 +5003,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 849392182}
-        m_TargetAssemblyTypeName: _GameFolders.Scripts.Managers.PanelManager, Assembly-CSharp
-        m_MethodName: OpenSettingsPanel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 921534377}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
+      - m_Target: {fileID: 1700540948}
+        m_TargetAssemblyTypeName: _GameFolders.Scripts.Managers.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySfx
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
@@ -5857,6 +5787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggle: {fileID: 1071089789}
   settingType: 2
+  closedLine: {fileID: 1039192938}
 --- !u!114 &1071089789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5899,35 +5830,11 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1071089786}
   toggleTransition: 1
-  graphic: {fileID: 1039192940}
+  graphic: {fileID: 0}
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 921706450}
-        m_TargetAssemblyTypeName: _GameFolders.Scripts.UI.SettingsButton, Assembly-CSharp
-        m_MethodName: HandleVibrationButton
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 921534377}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &1086234942
 GameObject:
@@ -6188,7 +6095,7 @@ GameObject:
   - component: {fileID: 1106586554}
   - component: {fileID: 1106586553}
   m_Layer: 5
-  m_Name: CoinText
+  m_Name: ShopMenuCoinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6615,7 +6522,7 @@ GameObject:
   - component: {fileID: 1172060645}
   - component: {fileID: 1172060644}
   m_Layer: 5
-  m_Name: CoinText
+  m_Name: MainMenuCoinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6915,6 +6822,81 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1191314059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1191314060}
+  - component: {fileID: 1191314062}
+  - component: {fileID: 1191314061}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1191314060
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191314059}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 765567200}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -0.9838028}
+  m_SizeDelta: {x: -22.6273, y: -28.5301}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1191314061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191314059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: cf5e33500914df74799bc01bfafac726, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1191314062
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191314059}
+  m_CullTransparentMesh: 1
 --- !u!1 &1201621111
 GameObject:
   m_ObjectHideFlags: 0
@@ -7652,26 +7634,14 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1262837689}
   toggleTransition: 1
-  graphic: {fileID: 1372573312}
+  graphic: {fileID: 0}
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 921706450}
-        m_TargetAssemblyTypeName: _GameFolders.Scripts.UI.SettingsButton, Assembly-CSharp
-        m_MethodName: HandleSfxButton
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 921534377}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
+      - m_Target: {fileID: 1700540948}
+        m_TargetAssemblyTypeName: _GameFolders.Scripts.Managers.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySfx
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
@@ -7696,6 +7666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggle: {fileID: 1262837691}
   settingType: 1
+  closedLine: {fileID: 1191314059}
 --- !u!1 &1285348932
 GameObject:
   m_ObjectHideFlags: 0
@@ -7855,6 +7826,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1700540948}
+        m_TargetAssemblyTypeName: _GameFolders.Scripts.Managers.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySfx
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1116460284}
         m_TargetAssemblyTypeName: _GameFolders.Scripts.UI.ButtonController, Assembly-CSharp
         m_MethodName: PlayButton
@@ -7862,18 +7845,6 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 921534377}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8326,81 +8297,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1353969008}
-  m_CullTransparentMesh: 1
---- !u!1 &1372573310
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1372573311}
-  - component: {fileID: 1372573313}
-  - component: {fileID: 1372573312}
-  m_Layer: 5
-  m_Name: CloseLine
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1372573311
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1372573310}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 765567200}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -40, y: -40}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1372573312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1372573310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cf5e33500914df74799bc01bfafac726, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1372573313
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1372573310}
   m_CullTransparentMesh: 1
 --- !u!1 &1388928864
 GameObject:
@@ -9501,26 +9397,14 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1604818248}
   toggleTransition: 1
-  graphic: {fileID: 1353969010}
+  graphic: {fileID: 0}
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 921706450}
-        m_TargetAssemblyTypeName: _GameFolders.Scripts.UI.SettingsButton, Assembly-CSharp
-        m_MethodName: HandleMusicButton
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 921534377}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
+      - m_Target: {fileID: 1700540948}
+        m_TargetAssemblyTypeName: _GameFolders.Scripts.Managers.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySfx
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
@@ -9545,6 +9429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggle: {fileID: 1604818250}
   settingType: 0
+  closedLine: {fileID: 1353969008}
 --- !u!1 &1606574380
 GameObject:
   m_ObjectHideFlags: 0
@@ -9651,9 +9536,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 921534377}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
+      - m_Target: {fileID: 1700540948}
+        m_TargetAssemblyTypeName: _GameFolders.Scripts.Managers.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySfx
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
@@ -10415,7 +10300,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97df5fe7196045d59e3528ab9be8c124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinText: {fileID: 1172060644}
+  mainMenuCoinText: {fileID: 1172060644}
+  shopMenuCoinText: {fileID: 1106586553}
 --- !u!4 &1789339727
 Transform:
   m_ObjectHideFlags: 0
@@ -10612,9 +10498,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 921534377}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
+      - m_Target: {fileID: 1700540948}
+        m_TargetAssemblyTypeName: _GameFolders.Scripts.Managers.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySfx
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
@@ -10980,26 +10866,14 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1868465771}
   toggleTransition: 1
-  graphic: {fileID: 1411712752}
+  graphic: {fileID: 0}
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 921706450}
-        m_TargetAssemblyTypeName: _GameFolders.Scripts.UI.SettingsButton, Assembly-CSharp
-        m_MethodName: HandleVibrationButton
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 921534377}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
+      - m_Target: {fileID: 1700540948}
+        m_TargetAssemblyTypeName: _GameFolders.Scripts.Managers.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySfx
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
@@ -11024,6 +10898,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggle: {fileID: 1868465773}
   settingType: 2
+  closedLine: {fileID: 1411712750}
 --- !u!1 &1888215099
 GameObject:
   m_ObjectHideFlags: 0
@@ -11106,19 +10981,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1888215102}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 921534377}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1888215102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12115,9 +11978,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 921534377}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
+      - m_Target: {fileID: 1700540948}
+        m_TargetAssemblyTypeName: _GameFolders.Scripts.Managers.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySfx
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}

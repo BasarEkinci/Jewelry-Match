@@ -7,7 +7,8 @@ namespace _GameFolders.Scripts.Managers
 {
     public class CoinManager : MonoSingleton<CoinManager>
     {
-        [SerializeField] private TMP_Text coinText;
+        [SerializeField] private TMP_Text mainMenuCoinText;
+        [SerializeField] private TMP_Text shopMenuCoinText;
         public int EarnedCoin => 5 + _earnedCoin; // Base 5 coin + collected coins in the level
         private int _currentCoin;
         private int _earnedCoin;
@@ -19,7 +20,8 @@ namespace _GameFolders.Scripts.Managers
             GameEventManager.OnCoinCollected += OnCoinCollected;
             GameEventManager.OnGameStateChanged += OnGameStateChanged;
             _currentCoin = GameDatabase.LoadData<int>(Constants.CurrentCoinKey);
-            coinText.text = _currentCoin.ToString(); 
+            mainMenuCoinText.text = _currentCoin.ToString();
+            shopMenuCoinText.text = _currentCoin.ToString();
         }
         
         private void OnDisable()
@@ -52,7 +54,8 @@ namespace _GameFolders.Scripts.Managers
             if (_currentCoin > amount)
             {
                 _currentCoin -= amount;
-                coinText.text = _currentCoin.ToString();   
+                mainMenuCoinText.text = _currentCoin.ToString();
+                shopMenuCoinText.text = _currentCoin.ToString();
             }
         }
         
@@ -60,7 +63,8 @@ namespace _GameFolders.Scripts.Managers
         {
             _currentCoin += amount;
             GameDatabase.SaveData(Constants.CurrentCoinKey, _currentCoin);
-            coinText.text = _currentCoin.ToString();
+            mainMenuCoinText.text = _currentCoin.ToString();
+            shopMenuCoinText.text = _currentCoin.ToString();
         }
     }
 }
