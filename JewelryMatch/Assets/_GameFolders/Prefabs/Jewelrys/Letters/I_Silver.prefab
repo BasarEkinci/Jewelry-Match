@@ -133,6 +133,7 @@ MonoBehaviour:
   selectedYPosition: 1.5
   collectedScale: 0.6
   scaleDurationAfterCollect: 0.1
+  xRotationOffset: 0
 --- !u!64 &3775375853055275120
 MeshCollider:
   m_ObjectHideFlags: 0

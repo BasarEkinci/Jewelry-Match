@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e8aac296cd5486e9989099e3ca9f3e3, type: 3}
+  m_Name: Level_2
+  m_EditorClassIdentifier: 
+  levelTime: 90
+  powerUps:
+  - powerUp: {fileID: 7298504932386466322, guid: f1ab7a5e5ad243b4d8ca9825b227e792, type: 3}
+    spawnCount: 2
+  otherJewelriesToSpawn:
+  - targetJewelry: {fileID: 2239272407115490992, guid: b18016be2512faa4091b53dc66c6f162, type: 3}
+    requiredMatchCount: 2
+  - targetJewelry: {fileID: 2683999140812806369, guid: bf990962c2facb5488b9a82ff61660ec, type: 3}
+    requiredMatchCount: 2
+  targetData:
+  - targetJewelry: {fileID: 4602146654020455742, guid: 833607e53c75b824095f3469ddc85e61, type: 3}
+    requiredMatchCount: 1
+  - targetJewelry: {fileID: 6526075687031108904, guid: 719d7a587c414de4c82fae43ba5e9758, type: 3}
+    requiredMatchCount: 2
+  - targetJewelry: {fileID: 2145041025945060828, guid: f7e8bd01ccbeca7418f81737373cae65, type: 3}
+    requiredMatchCount: 2
+  - targetJewelry: {fileID: 6994655230155368306, guid: e2f2f030a84f61c4d9b8a666cd9dd36d, type: 3}
+    requiredMatchCount: 2

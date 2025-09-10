@@ -38,6 +38,11 @@ namespace _GameFolders.Scripts.UI
         private void OnDisable()
         {
             _sequence.Kill();
+            continueButton.transform.DOScale(Vector3.zero, 0.1f);
+            foreach (var star in winStars)
+            {
+                star.color = _starDefaultColor;
+            }
             GameEventManager.OnLevelCompleted -= HandleLevelCompleted;
         }
         private void HandleLevelCompleted(int earnedStars)

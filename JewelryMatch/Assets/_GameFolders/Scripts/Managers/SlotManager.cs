@@ -50,8 +50,10 @@ namespace _GameFolders.Scripts.Managers
             float duration = 0.2f; 
             for (int i = 0; i < _collectedJewelry.Count; i++)
             {
-                _collectedJewelry[i].transform.DOMove(slotsTransforms[i].position, duration);
-                _collectedJewelry[i].transform.DORotate(slotsTransforms[i].eulerAngles, duration);
+                _collectedJewelry[i].transform.DOMove(
+                    slotsTransforms[i].position + _collectedJewelry[i].CollectedPositionOffset, duration);
+                _collectedJewelry[i].transform.DORotate(
+                    slotsTransforms[i].eulerAngles + _collectedJewelry[i].RotationOffset, duration);
             }
             return duration;
         }

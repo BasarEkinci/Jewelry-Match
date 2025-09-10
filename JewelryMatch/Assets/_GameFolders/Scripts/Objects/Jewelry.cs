@@ -15,7 +15,11 @@ namespace _GameFolders.Scripts.Objects
         [SerializeField] private float selectedYPosition = 1f;
         [SerializeField] private float collectedScale = 0.6f;
         [SerializeField] private float scaleDurationAfterCollect = 0.1f;
+        [SerializeField] private Vector3 rotationOffset = Vector3.zero;
+        [SerializeField] private Vector3 collectedPositionOffset = Vector3.zero;
         
+        public Vector3 RotationOffset => rotationOffset;
+        public Vector3 CollectedPositionOffset => collectedPositionOffset;
         public JewelryDataSO JewelryData => jewelryData;
         
         private static readonly int OutlineMultiplier = Shader.PropertyToID("_OutlineMultiplier");

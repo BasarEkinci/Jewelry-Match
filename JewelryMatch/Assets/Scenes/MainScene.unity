@@ -5015,6 +5015,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 849392182}
+        m_TargetAssemblyTypeName: _GameFolders.Scripts.Managers.PanelManager, Assembly-CSharp
+        m_MethodName: OpenSettingsPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1038340363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13451,6 +13463,8 @@ MonoBehaviour:
   gameplayObject: {fileID: 929384858}
   levels:
   - {fileID: 11400000, guid: 56744e27068b27a40930e4cd8a1bb835, type: 2}
+  - {fileID: 11400000, guid: 9be22ff047dcd7248b92b9312ecb6d28, type: 2}
+  - {fileID: 11400000, guid: a32b71fc4c59dc44a860947dad7dd260, type: 2}
 --- !u!4 &2110097144
 Transform:
   m_ObjectHideFlags: 0

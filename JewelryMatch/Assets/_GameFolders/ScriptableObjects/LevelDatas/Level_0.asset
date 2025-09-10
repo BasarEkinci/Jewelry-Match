@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8aac296cd5486e9989099e3ca9f3e3, type: 3}
   m_Name: Level_0
   m_EditorClassIdentifier: 
-  levelTime: 30
+  levelTime: 60
   powerUps:
   - powerUp: {fileID: 7298504932386466322, guid: f1ab7a5e5ad243b4d8ca9825b227e792, type: 3}
     spawnCount: 1
@@ -22,6 +22,8 @@ MonoBehaviour:
   - targetJewelry: {fileID: 1422962430380926167, guid: e4920677ff7d6bf49b0874912463b6f0, type: 3}
     requiredMatchCount: 1
   - targetJewelry: {fileID: 6735487707725616790, guid: d05fce6190ec19d4ca078f3d35d065a7, type: 3}
+    requiredMatchCount: 1
+  - targetJewelry: {fileID: 6994655230155368306, guid: e2f2f030a84f61c4d9b8a666cd9dd36d, type: 3}
     requiredMatchCount: 1
   targetData:
   - targetJewelry: {fileID: 2299332578982629468, guid: cd2de8365ebe300478aabe2346487d0b, type: 3}

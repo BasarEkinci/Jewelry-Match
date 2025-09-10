@@ -106,6 +106,7 @@ MonoBehaviour:
   selectedYPosition: 1.5
   collectedScale: 0.6
   scaleDurationAfterCollect: 0.1
+  xRotationOffset: 0
 --- !u!54 &-701229523385118300
 Rigidbody:
   m_ObjectHideFlags: 0

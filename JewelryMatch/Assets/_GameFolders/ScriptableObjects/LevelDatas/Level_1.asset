@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e8aac296cd5486e9989099e3ca9f3e3, type: 3}
+  m_Name: Level_1
+  m_EditorClassIdentifier: 
+  levelTime: 60
+  powerUps:
+  - powerUp: {fileID: 7298504932386466322, guid: f1ab7a5e5ad243b4d8ca9825b227e792, type: 3}
+    spawnCount: 1
+  otherJewelriesToSpawn:
+  - targetJewelry: {fileID: 2145041025945060828, guid: f7e8bd01ccbeca7418f81737373cae65, type: 3}
+    requiredMatchCount: 1
+  - targetJewelry: {fileID: 1422962430380926167, guid: e4920677ff7d6bf49b0874912463b6f0, type: 3}
+    requiredMatchCount: 1
+  - targetJewelry: {fileID: 5454409563516015742, guid: 35d65531f591d0c429b2c0562d982740, type: 3}
+    requiredMatchCount: 1
+  targetData:
+  - targetJewelry: {fileID: 6994655230155368306, guid: e2f2f030a84f61c4d9b8a666cd9dd36d, type: 3}
+    requiredMatchCount: 1
