@@ -21,6 +21,7 @@ namespace _GameFolders.Scripts.Managers
 
         private void Start()
         {
+            Application.targetFrameRate = 60;
             _currentState = GameState.MainMenu;
             _currentLevelIndex = GameDatabase.LoadData<int>(Constants.CurrentLevelKey);
             GameEventManager.InvokeGameStateChanged(_currentState);

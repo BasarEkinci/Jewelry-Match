@@ -51,6 +51,7 @@ namespace _GameFolders.Scripts.Objects
         public override void Collect()
         {
             transform.DOScale(collectedScale, scaleDurationAfterCollect);
+            _rb.angularVelocity = Vector3.zero;
             _rb.isKinematic = true;
             _coll.enabled = false;
             _mesh.shadowCastingMode = ShadowCastingMode.Off;

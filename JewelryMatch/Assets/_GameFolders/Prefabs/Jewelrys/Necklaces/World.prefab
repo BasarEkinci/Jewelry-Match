@@ -153,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jewelryData: {fileID: 11400000, guid: fb3fb0c16292064499013ff74f2ea8c1, type: 2}
   selectedYPosition: 1
-  collectedScale: 0.5
+  collectedScale: 2
   scaleDurationAfterCollect: 0.1
   rotationOffset: {x: -90, y: 0, z: 0}
+  collectedPositionOffset: {x: 0, y: 0, z: 0}

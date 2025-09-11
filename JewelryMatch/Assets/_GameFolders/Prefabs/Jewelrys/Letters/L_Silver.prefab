@@ -104,9 +104,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jewelryData: {fileID: 11400000, guid: 311a2a8c5e9a70d43a8f9c006719e4cb, type: 2}
   selectedYPosition: 1.5
-  collectedScale: 0.6
+  collectedScale: 2
   scaleDurationAfterCollect: 0.1
-  xRotationOffset: 0
+  rotationOffset: {x: 0, y: 0, z: 0}
+  collectedPositionOffset: {x: 0, y: 0, z: 0}
 --- !u!54 &6628424383814395024
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -131,9 +131,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jewelryData: {fileID: 11400000, guid: 07b4756551a32d4489a81e2c8efdd102, type: 2}
   selectedYPosition: 1.5
-  collectedScale: 0.6
+  collectedScale: 2
   scaleDurationAfterCollect: 0.1
-  xRotationOffset: 0
+  rotationOffset: {x: 0, y: 0, z: 0}
+  collectedPositionOffset: {x: 0, y: 0, z: 0}
 --- !u!64 &-3292652300318425045
 MeshCollider:
   m_ObjectHideFlags: 0

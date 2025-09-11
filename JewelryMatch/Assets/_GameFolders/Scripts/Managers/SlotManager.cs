@@ -16,6 +16,7 @@ namespace _GameFolders.Scripts.Managers
         [SerializeField] private List<Slot> slots;
         
         private readonly List<Jewelry> _collectedJewelry = new();
+        private const float RepositionDuration = 0.2f;
 
         private void OnEnable()
         {
@@ -45,31 +46,44 @@ namespace _GameFolders.Scripts.Managers
             return same == 3;
         }
 
-        private float UpdateJewelryPositions()
+        private UniTask UpdateJewelryPositionsAsync()
         {
-            float duration = 0.2f; 
+            var tasks = new List<UniTask>(_collectedJewelry.Count * 2);
             for (int i = 0; i < _collectedJewelry.Count; i++)
             {
-                _collectedJewelry[i].transform.DOMove(
-                    slotsTransforms[i].position + _collectedJewelry[i].CollectedPositionOffset, duration);
-                _collectedJewelry[i].transform.DORotate(
-                    slotsTransforms[i].eulerAngles + _collectedJewelry[i].RotationOffset, duration);
-            }
-            return duration;
-        }
+                var jew = _collectedJewelry[i];
+                var t = jew.transform;
 
+                t.DOKill();
+                t.SetParent(slotsTransforms[i], true);
+
+                Vector3 targetPos = slotsTransforms[i].position + jew.CollectedPositionOffset;
+                Vector3 targetRot = slotsTransforms[i].eulerAngles + jew.RotationOffset;
+
+                tasks.Add(t.DOMove(targetPos, RepositionDuration)
+                    .SetEase(Ease.OutQuad)
+                    .AsyncWaitForCompletion()
+                    .AsUniTask());
+                tasks.Add(t.DORotate(targetRot, RepositionDuration)
+                    .SetEase(Ease.OutQuad)
+                    .AsyncWaitForCompletion()
+                    .AsUniTask());
+            }
+            return UniTask.WhenAll(tasks);
+        }
         private async UniTaskVoid InsertIfExist(Jewelry collected)
         {
-            int index = _collectedJewelry.
-                FindLastIndex(j => j.JewelryData.JewelryID == collected.JewelryData.JewelryID);
+            int index = _collectedJewelry.FindLastIndex(j => j.JewelryData.JewelryID == collected.JewelryData.JewelryID);
             if (index >= 0)
                 _collectedJewelry.Insert(index + 1, collected);
             else
                 _collectedJewelry.Add(collected);
 
-            float duration = UpdateJewelryPositions();
-            await UniTask.Delay(TimeSpan.FromSeconds(duration));
-            slots[_collectedJewelry.IndexOf(collected)].Animate();
+            await UpdateJewelryPositionsAsync();
+            
+            int slotIdx = _collectedJewelry.IndexOf(collected);
+            if (slotIdx >= 0 && slotIdx < slots.Count)
+                slots[slotIdx].Animate();
 
             var matchedJewels = _collectedJewelry
                 .Where(j => j.JewelryData.JewelryID == collected.JewelryData.JewelryID)
@@ -77,32 +91,40 @@ namespace _GameFolders.Scripts.Managers
 
             if (matchedJewels.Count == 3)
             {
-                await UniTask.Delay(TimeSpan.FromSeconds(duration));
-                MatchJewelry(matchedJewels);
-                await UniTask.Delay(TimeSpan.FromSeconds(duration));
-                UpdateJewelryPositions();
+                await MatchJewelryAsync(matchedJewels);
+                await UpdateJewelryPositionsAsync();
             }
         }
 
-        private async void MatchJewelry(List<Jewelry> matched)
+        private async UniTask MatchJewelryAsync(List<Jewelry> matched)
         {
             try
             {
-                float targetXPosition = slotsTransforms[_collectedJewelry.IndexOf(matched[1])].position.x;
-                matched[0].transform.DOMoveX(targetXPosition, 0.1f);
-                matched[2].transform.DOMoveX(targetXPosition, 0.1f);
+                int centerIndex = _collectedJewelry.IndexOf(matched[1]);
+                if (centerIndex < 0) return;
+
+                float targetX = slotsTransforms[centerIndex].position.x;
+
+                foreach (var j in matched)
+                {
+                    j.transform.DOKill();
+                    j.transform.DOMoveX(targetX, 0.1f);
+                }
+
                 await UniTask.Delay(TimeSpan.FromSeconds(0.1f));
+
                 foreach (var jewelry in matched)
                 {
                     _collectedJewelry.Remove(jewelry);
                     jewelry.OnMatch();
                 }
+
                 AudioManager.Instance.PlaySfx(AudioManager.Instance.AudioData.MatchSoundSfx);
                 VibrationHelper.Vibrate(100);
             }
             catch (Exception e)
             {
-                throw new Exception("Error during matching jewelry", e);
+                Debug.LogException(e);
             }
         }
         
