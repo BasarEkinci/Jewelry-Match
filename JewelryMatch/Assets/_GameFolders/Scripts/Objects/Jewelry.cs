@@ -23,41 +23,45 @@ namespace _GameFolders.Scripts.Objects
         public JewelryDataSO JewelryData => jewelryData;
         
         private static readonly int OutlineMultiplier = Shader.PropertyToID("_OutlineMultiplier");
-
-        private Tween _hoverTween;
+        
         private Rigidbody _rb;
         private Collider _coll; 
         private MeshRenderer _mesh;
         private Material _outlineMaterial;
+        private MaterialPropertyBlock _mpb;
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody>();
             _coll = GetComponent<Collider>();
             _mesh = GetComponentInChildren<MeshRenderer>();
-            _outlineMaterial = _mesh.materials[1];
-        }
-
-        private void OnDestroy()
-        {
-            _hoverTween?.Kill();
-        }
-
-        private void OnDisable()
-        {
-            _hoverTween?.Kill();
+            _mpb = new MaterialPropertyBlock();
         }
 
         public override void Collect()
         {
-            transform.DOScale(collectedScale, scaleDurationAfterCollect);
-            _rb.angularVelocity = Vector3.zero;
             _rb.isKinematic = true;
+            _rb.constraints = RigidbodyConstraints.FreezeAll;
             _coll.enabled = false;
             _mesh.shadowCastingMode = ShadowCastingMode.Off;
-            _outlineMaterial.SetFloat(OutlineMultiplier, 0f);
+            SetOutline(0f);
+            transform.localScale = Vector3.one * collectedScale;
         }
 
+        public void SetCollectedValues()
+        {
+            _rb.isKinematic = true;
+            _rb.constraints = RigidbodyConstraints.FreezeAll;
+            _coll.enabled = false;
+            _mesh.shadowCastingMode = ShadowCastingMode.Off;
+            SetOutline(0f);
+        }
+        private void SetOutline(float value)
+        {
+            _mesh.GetPropertyBlock(_mpb);
+            _mpb.SetFloat(OutlineMultiplier, value);
+            _mesh.SetPropertyBlock(_mpb); 
+        }
         public void OnMatch()
         {
             Sequence seq = DOTween.Sequence();
@@ -69,15 +73,16 @@ namespace _GameFolders.Scripts.Objects
         {
             _rb.isKinematic = false;
             _rb.useGravity = true;
-            _outlineMaterial.SetFloat(OutlineMultiplier, 0f);
+            SetOutline(0f);
         }
 
         public override void Select()
         {
             _rb.useGravity = false;
             _rb.isKinematic = true;
-            _outlineMaterial.SetFloat(OutlineMultiplier, 1f);
+            SetOutline(1f);
             transform.DOLocalMoveY(selectedYPosition, 0.2f);
         }
+        
     }
 }

@@ -23,6 +23,11 @@ namespace _GameFolders.Scripts.Managers
             GameEventManager.OnGameStateChanged += HandleGameStateChange;
         }
 
+        private void Update()
+        {
+            CheckCollectedJewelry();
+        }
+
         private void OnDisable()
         {
             GameEventManager.OnGameStateChanged -= HandleGameStateChange;
@@ -35,6 +40,7 @@ namespace _GameFolders.Scripts.Managers
             bool completesTriplet = WillMatchWithIncoming(jewelry);
             if (hasSpace || completesTriplet)
             {
+
                 return;
             }
             GameEventManager.InvokeGameStateChanged(GameState.NoMoreSpaces);
@@ -53,11 +59,11 @@ namespace _GameFolders.Scripts.Managers
             {
                 var jew = _collectedJewelry[i];
                 var t = jew.transform;
-
+                
                 t.DOKill();
-                t.SetParent(slotsTransforms[i], true);
+                //t.SetParent(slotsTransforms[i], true);
 
-                Vector3 targetPos = slotsTransforms[i].position + jew.CollectedPositionOffset;
+                Vector3 targetPos = slotsTransforms[i].position;
                 Vector3 targetRot = slotsTransforms[i].eulerAngles + jew.RotationOffset;
 
                 tasks.Add(t.DOMove(targetPos, RepositionDuration)
@@ -141,6 +147,15 @@ namespace _GameFolders.Scripts.Managers
                     Destroy(_collectedJewelry[i].gameObject);
                     _collectedJewelry.RemoveAt(i);
                 }
+            }
+        }
+        
+        private void CheckCollectedJewelry()
+        {
+            for (int i = 0; i < _collectedJewelry.Count; i++)
+            {
+                _collectedJewelry[i].transform.position = slotsTransforms[i].position;
+                _collectedJewelry[i].SetCollectedValues();
             }
         }
     }
